@@ -4,64 +4,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   selector: 'app-panel-acceso',
   standalone: true,
   imports: [],
-  template: `
-    <div
-      class="bg-white rounded-xl shadow-lg border border-red-50 overflow-hidden h-full flex flex-col"
-    >
-      <!-- Encabezado del Panel -->
-      <div class="bg-vinotinto p-4 text-center">
-        <h2 class="text-white font-bold text-xl tracking-wide">
-          FONHVIM EN LÍNEA
-        </h2>
-        <p class="text-red-100 text-sm mt-1">Plataforma de Autogestión</p>
-      </div>
-
-      <!-- Cuerpo del Panel -->
-      <div class="p-6 flex-grow flex flex-col justify-center gap-4 bg-gray-50">
-        <button
-          (click)="openLogin.emit()"
-          class="w-full bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-3 px-4 rounded-lg shadow transition-colors flex items-center justify-center gap-2 group"
-        >
-          <span>INGRESAR</span>
-          <svg
-            class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-            ></path>
-          </svg>
-        </button>
-
-        <div class="relative flex py-2 items-center">
-          <div class="flex-grow border-t border-gray-300"></div>
-          <span class="flex-shrink-0 mx-4 text-gray-400 text-xs">O</span>
-          <div class="flex-grow border-t border-gray-300"></div>
-        </div>
-
-        <button
-          (click)="openRegister.emit()"
-          class="w-full bg-white hover:bg-gray-50 text-vinotinto font-bold py-3 px-4 rounded-lg border-2 border-vinotinto shadow-sm transition-colors"
-        >
-          REGÍSTRATE
-        </button>
-
-        <div class="mt-4 text-center">
-          <a
-            href="#"
-            class="text-sm text-gray-500 hover:text-blue-600 underline decoration-dotted"
-          >
-            ¿Olvidó su contraseña?
-          </a>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './panel-acceso.html',
   styles: [],
 })
 export class PanelAcceso {
