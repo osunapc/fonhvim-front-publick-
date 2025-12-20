@@ -1,24 +1,24 @@
 <div
-  class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 overflow-y-auto"
 >
   <div
-    class="bg-white rounded-lg shadow-2xl w-full max-w-2xl my-8 animate-fade-in-up"
+    class="bg-white rounded-xl shadow-2xl w-full max-w-2xl my-8 animate-fade-in-up border border-slate-100"
   >
     <!-- Header -->
     <div
-      class="bg-vinotinto p-4 flex justify-between items-center text-white rounded-t-lg"
+      class="bg-vinotinto p-6 flex justify-between items-center text-white rounded-t-xl shadow-sm"
     >
       <div>
-        <h3 class="font-bold tracking-wide uppercase">
+        <h3 class="font-bold tracking-widest uppercase text-base">
           Registro de Solicitante
         </h3>
-        <p class="text-xs text-red-100">
+        <p class="text-[10px] text-red-100/80 uppercase tracking-tighter mt-1">
           FONHVIM - Gobernación del Estado Mérida
         </p>
       </div>
       <button
         (click)="close.emit()"
-        class="text-white hover:text-gray-300 focus:outline-none"
+        class="text-white/80 hover:text-white transition-colors focus:outline-none"
       >
         <svg
           class="w-6 h-6"
@@ -37,90 +37,102 @@
     </div>
 
     <!-- Body -->
-    <div class="p-6">
+    <div class="p-8">
       <form
         [formGroup]="registroForm"
         (ngSubmit)="onSubmit()"
-        class="grid grid-cols-1 md:grid-cols-2 gap-4"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <!-- Datos Personales -->
-        <div class="md:col-span-2 border-b border-gray-100 pb-2 mb-2">
-          <h4 class="text-vinotinto font-semibold text-sm uppercase">
+        <!-- Sección: Datos Personales -->
+        <div class="md:col-span-2 flex items-center gap-4 mb-2">
+          <div class="h-px bg-slate-200 flex-grow"></div>
+          <h4
+            class="text-vinotinto font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+          >
             Datos de Identidad
           </h4>
+          <div class="h-px bg-slate-200 flex-grow"></div>
         </div>
 
         <!-- CI -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Cédula de Identidad <span class="text-red-500">*</span></label
           >
           <input
             type="text"
             formControlName="ci"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto uppercase"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none uppercase"
             placeholder="V-12345678"
           />
         </div>
 
         <!-- Nombre Completo -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Nombre Completo <span class="text-red-500">*</span></label
           >
           <input
             type="text"
             formControlName="nombre"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="Juan Pérez"
           />
         </div>
 
         <!-- Email -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Correo Electrónico <span class="text-red-500">*</span></label
           >
           <input
             type="email"
             formControlName="email"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="correo@ejemplo.com"
           />
         </div>
 
         <!-- Password -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Contraseña <span class="text-red-500">*</span></label
           >
           <input
             type="password"
             formControlName="password"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="********"
           />
         </div>
 
         <!-- Teléfono -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Teléfono de Contacto <span class="text-red-500">*</span></label
           >
           <input
             type="text"
             formControlName="telefono"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="0414-1234567"
           />
         </div>
 
         <!-- Sexo -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">Sexo</label>
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Sexo</label
+          >
           <select
             formControlName="sexo"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
           >
             <option value="">Seleccione</option>
             <option value="M">Masculino</option>
@@ -128,22 +140,27 @@
           </select>
         </div>
 
-        <!-- Ubicación Meredith -->
-        <div class="md:col-span-2 border-b border-gray-100 pb-2 mb-2 mt-2">
-          <h4 class="text-vinotinto font-semibold text-sm uppercase">
-            Ubicación Residencial (Estado Mérida)
+        <!-- Sección: Ubicación -->
+        <div class="md:col-span-2 flex items-center gap-4 mb-2 mt-4">
+          <div class="h-px bg-slate-200 flex-grow"></div>
+          <h4
+            class="text-vinotinto font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+          >
+            Ubicación Residencial
           </h4>
+          <div class="h-px bg-slate-200 flex-grow"></div>
         </div>
 
         <!-- Municipio -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Municipio <span class="text-red-500">*</span></label
           >
           <select
             formControlName="municipio"
             (change)="onMunicipioChange()"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
           >
             <option value="">Seleccione Municipio</option>
             @for (m of municipios; track m.id) {
@@ -153,13 +170,14 @@
         </div>
 
         <!-- Parroquia -->
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Parroquia <span class="text-red-500">*</span></label
           >
           <select
             formControlName="parroquia"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none disabled:opacity-50"
             [disabled]="!parroquias.length"
           >
             <option value="">Seleccione Parroquia</option>
@@ -170,33 +188,34 @@
         </div>
 
         <!-- Dirección Vivienda -->
-        <div class="md:col-span-2">
-          <label class="block text-xs font-bold text-gray-700 mb-1"
+        <div class="md:col-span-2 group">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Dirección Detallada <span class="text-red-500">*</span></label
           >
           <textarea
             formControlName="direccion_vivienda"
-            rows="2"
-            class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
-            placeholder="Av. Principal, Sector..."
+            rows="3"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none resize-none"
+            placeholder="Av. Principal, Edificio, Piso, Número de casa..."
           ></textarea>
         </div>
 
         <!-- Botones -->
         <div
-          class="md:col-span-2 flex justify-end gap-3 mt-4 pt-4 border-t border-gray-100"
+          class="md:col-span-2 flex justify-end gap-4 mt-6 pt-6 border-t border-slate-100"
         >
           <button
             type="button"
             (click)="close.emit()"
-            class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded text-sm transition-colors"
+            class="text-slate-500 hover:text-slate-700 font-bold py-2 px-6 rounded text-xs transition-all uppercase tracking-widest"
           >
             CANCELAR
           </button>
           <button
             type="submit"
             [disabled]="registroForm.invalid"
-            class="bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-2 px-6 rounded text-sm shadow transition-colors disabled:opacity-50"
+            class="bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-3 px-8 rounded-lg text-xs shadow-lg shadow-vinotinto/20 transition-all active:scale-[0.98] disabled:opacity-50 uppercase tracking-widest"
           >
             FINALIZAR REGISTRO
           </button>

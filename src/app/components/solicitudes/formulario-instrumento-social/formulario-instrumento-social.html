@@ -1,0 +1,217 @@
+<div class="animate-fade-in max-w-4xl mx-auto pb-20">
+  <div class="mb-8 flex items-center justify-between">
+    <div>
+      <h2 class="text-2xl font-bold text-vinotinto">
+        Censo Socio-Habitacional
+      </h2>
+      <p class="text-slate-500 text-sm italic">Instrumento Social de FONHVIM</p>
+    </div>
+    <button
+      (click)="back.emit()"
+      class="text-slate-400 hover:text-vinotinto text-sm font-medium flex items-center gap-2"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+        ></path>
+      </svg>
+      Cancelar
+    </button>
+  </div>
+
+  <form [formGroup]="socialForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <!-- Sección 1: Datos del Jefe de Hogar -->
+    <section class="form-section">
+      <div class="section-title">
+        <span>Datos del Jefe de Hogar</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="md:col-span-2">
+          <label>Nombres y Apellidos Completos *</label>
+          <input
+            type="text"
+            formControlName="nombres_apellidos"
+            placeholder="Ej. Pedro Pérez"
+          />
+        </div>
+
+        <div>
+          <label>Cédula de Identidad *</label>
+          <input type="text" formControlName="ci" placeholder="V-12345678" />
+        </div>
+
+        <div>
+          <label>Teléfono de Contacto *</label>
+          <input
+            type="text"
+            formControlName="telefono"
+            placeholder="0414-0000000"
+          />
+        </div>
+
+        <div>
+          <label>Sexo</label>
+          <select formControlName="sexo">
+            <option value="">Seleccione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Estado Civil</label>
+          <select formControlName="estado_civil">
+            <option value="">Seleccione</option>
+            <option value="Soltero/a">Soltero/a</option>
+            <option value="Casado/a">Casado/a</option>
+            <option value="Concubinato">Concubinato</option>
+            <option value="Divorciado/a">Divorciado/a</option>
+            <option value="Viudo/a">Viudo/a</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Grupo Familiar -->
+    <section class="form-section">
+      <div class="section-title">
+        <span>Grupo Familiar</span>
+      </div>
+
+      <div formArrayName="grupo_familiar" class="space-y-4">
+        @for (integrante of grupoFamiliar.controls; track $index) {
+        <div
+          [formGroupName]="$index"
+          class="p-4 bg-slate-50 rounded-lg border border-slate-100 relative group/int"
+        >
+          <button
+            *ngIf="grupoFamiliar.length > 1"
+            (click)="removeIntegrante($index)"
+            class="absolute top-2 right-2 text-slate-300 hover:text-red-500 transition-colors"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+            <div>
+              <label>Nombre *</label>
+              <input type="text" formControlName="nombre" class="bg-white" />
+            </div>
+            <div>
+              <label>Apellido *</label>
+              <input type="text" formControlName="apellido" class="bg-white" />
+            </div>
+            <div>
+              <label>Cédula</label>
+              <input type="text" formControlName="cedula" class="bg-white" />
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+
+      <button type="button" (click)="addIntegrante()" class="btn-add mt-4">
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          ></path>
+        </svg>
+        Añadir integrante al grupo familiar
+      </button>
+    </section>
+
+    <!-- Sección 3: Vivienda y Socioeconómicos -->
+    <section class="form-section">
+      <div class="section-title">
+        <span>Vivienda y Situación Social</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="md:col-span-2">
+          <label>Dirección de Vivienda Actual *</label>
+          <textarea
+            formControlName="direccion_vivienda"
+            rows="2"
+            placeholder="Av, Sector, Casa Nº..."
+          ></textarea>
+        </div>
+
+        <div>
+          <label>Tenencia de la Vivienda</label>
+          <select formControlName="tenencia_vivienda">
+            <option value="">Seleccione</option>
+            <option value="Propia">Propia</option>
+            <option value="Alquilada">Alquilada</option>
+            <option value="Prestada">Prestada</option>
+            <option value="Familiar">Familiar</option>
+            <option value="Traspaso">Traspaso</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Ingreso Mensual del Hogar (Aproximado)</label>
+          <input
+            type="number"
+            formControlName="ingreso_mensual_hogar"
+            placeholder="Bs."
+          />
+        </div>
+
+        <div class="md:col-span-2">
+          <label>Condiciones Generales de la Vivienda (Observaciones)</label>
+          <textarea
+            formControlName="condiciones_vivienda"
+            rows="3"
+            placeholder="Describa el estado de paredes, techo, servicios..."
+          ></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botonera Final -->
+    <div class="flex justify-end gap-4">
+      <button
+        type="button"
+        (click)="back.emit()"
+        class="px-8 py-3 text-slate-500 font-bold text-xs uppercase tracking-widest hover:text-slate-700 transition-all"
+      >
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        [disabled]="socialForm.invalid"
+        class="bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-3 px-10 rounded-xl shadow-lg shadow-vinotinto/20 transition-all active:scale-[0.98] disabled:opacity-50 uppercase tracking-widest text-xs"
+      >
+        Enviar Solicitud
+      </button>
+    </div>
+  </form>
+</div>
