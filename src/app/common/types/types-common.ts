@@ -4,6 +4,8 @@ export interface Usuario {
   nombre?: string;
   contraseña: string;
   rol: string;
+  municipio?: string;
+  parroquia?: string;
 }
 
 export interface FormData {

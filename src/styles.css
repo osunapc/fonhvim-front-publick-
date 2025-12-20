@@ -1,2 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+
+@theme {
+  --color-vinotinto: #6d0a1b; /* Típico vinotinto institucional venezolano */
+  --color-vinotinto-hover: #560815;
+}

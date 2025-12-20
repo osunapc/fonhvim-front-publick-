@@ -21,7 +21,7 @@ export const publicGuard: CanActivateFn = (route, state) => {
   const session = authState.getSession();
 console.log('session', session)
   if (session) {
-    router.navigateByUrl('/home');
+    router.navigateByUrl('/solicitudes');
   }
 
   return true;

@@ -6,21 +6,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
   imports: [],
   template: `
     <div
-      class="bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden h-full flex flex-col"
+      class="bg-white rounded-xl shadow-lg border border-red-50 overflow-hidden h-full flex flex-col"
     >
       <!-- Encabezado del Panel -->
-      <div class="bg-blue-600 p-4 text-center">
+      <div class="bg-vinotinto p-4 text-center">
         <h2 class="text-white font-bold text-xl tracking-wide">
           FONHVIM EN LÍNEA
         </h2>
-        <p class="text-blue-100 text-sm mt-1">Plataforma de Autogestión</p>
+        <p class="text-red-100 text-sm mt-1">Plataforma de Autogestión</p>
       </div>
 
       <!-- Cuerpo del Panel -->
       <div class="p-6 flex-grow flex flex-col justify-center gap-4 bg-gray-50">
         <button
           (click)="openLogin.emit()"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors flex items-center justify-center gap-2 group"
+          class="w-full bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-3 px-4 rounded-lg shadow transition-colors flex items-center justify-center gap-2 group"
         >
           <span>INGRESAR</span>
           <svg
@@ -46,7 +46,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
         <button
           (click)="openRegister.emit()"
-          class="w-full bg-white hover:bg-gray-50 text-blue-600 font-bold py-3 px-4 rounded-lg border-2 border-blue-600 shadow-sm transition-colors"
+          class="w-full bg-white hover:bg-gray-50 text-vinotinto font-bold py-3 px-4 rounded-lg border-2 border-vinotinto shadow-sm transition-colors"
         >
           REGÍSTRATE
         </button>

@@ -1,11 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import {
+  MUNICIPIOS_MERIDA,
+  Municipio,
+  Parroquia,
+} from '../../common/constants/geografia-merida';
 
 @Component({
   selector: 'app-registro',
@@ -20,12 +24,14 @@ import {
       >
         <!-- Header -->
         <div
-          class="bg-blue-900 p-4 flex justify-between items-center text-white rounded-t-lg"
+          class="bg-vinotinto p-4 flex justify-between items-center text-white rounded-t-lg"
         >
           <div>
-            <h3 class="font-bold tracking-wide">REGISTRO DE USUARIO</h3>
-            <p class="text-xs text-blue-200">
-              Complete el formulario para crear su cuenta
+            <h3 class="font-bold tracking-wide uppercase">
+              Registro de Solicitante
+            </h3>
+            <p class="text-xs text-red-100">
+              FONHVIM - Gobernación del Estado Mérida
             </p>
           </div>
           <button
@@ -57,8 +63,8 @@ import {
           >
             <!-- Datos Personales -->
             <div class="md:col-span-2 border-b border-gray-100 pb-2 mb-2">
-              <h4 class="text-blue-800 font-semibold text-sm uppercase">
-                Datos Personales
+              <h4 class="text-vinotinto font-semibold text-sm uppercase">
+                Datos de Identidad
               </h4>
             </div>
 
@@ -70,8 +76,21 @@ import {
               <input
                 type="text"
                 formControlName="ci"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500 uppercase"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto uppercase"
                 placeholder="V-12345678"
+              />
+            </div>
+
+            <!-- Nombre Completo -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 mb-1"
+                >Nombre Completo <span class="text-red-500">*</span></label
+              >
+              <input
+                type="text"
+                formControlName="nombre"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+                placeholder="Juan Pérez"
               />
             </div>
 
@@ -83,21 +102,8 @@ import {
               <input
                 type="email"
                 formControlName="email"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
                 placeholder="correo@ejemplo.com"
-              />
-            </div>
-
-            <!-- Nombre Usuario -->
-            <div>
-              <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Nombre de Usuario <span class="text-red-500">*</span></label
-              >
-              <input
-                type="text"
-                formControlName="username"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
-                placeholder="usuario123"
               />
             </div>
 
@@ -109,7 +115,7 @@ import {
               <input
                 type="password"
                 formControlName="password"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
                 placeholder="********"
               />
             </div>
@@ -117,25 +123,13 @@ import {
             <!-- Teléfono -->
             <div>
               <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Teléfono</label
+                >Teléfono de Contacto <span class="text-red-500">*</span></label
               >
               <input
                 type="text"
                 formControlName="telefono"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
                 placeholder="0414-1234567"
-              />
-            </div>
-
-            <!-- Fecha Nacimiento -->
-            <div>
-              <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Fecha de Nacimiento</label
-              >
-              <input
-                type="date"
-                formControlName="fecha_nac"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
@@ -146,7 +140,7 @@ import {
               >
               <select
                 formControlName="sexo"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
               >
                 <option value="">Seleccione</option>
                 <option value="M">Masculino</option>
@@ -154,63 +148,57 @@ import {
               </select>
             </div>
 
-            <!-- Estado Civil -->
-            <div>
-              <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Estado Civil</label
-              >
-              <select
-                formControlName="estado_civil"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="">Seleccione</option>
-                <option value="soltero">Soltero(a)</option>
-                <option value="casado">Casado(a)</option>
-                <option value="divorciado">Divorciado(a)</option>
-                <option value="viudo">Viudo(a)</option>
-              </select>
-            </div>
-
-            <!-- Datos Ubicación -->
+            <!-- Ubicación Meredith -->
             <div class="md:col-span-2 border-b border-gray-100 pb-2 mb-2 mt-2">
-              <h4 class="text-blue-800 font-semibold text-sm uppercase">
-                Ubicación y Solicitud
+              <h4 class="text-vinotinto font-semibold text-sm uppercase">
+                Ubicación Residencial (Estado Mérida)
               </h4>
             </div>
 
-            <!-- Estado/Ciudad (usamos ciudad del dto register original) -->
+            <!-- Municipio -->
             <div>
               <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Ciudad/Estado</label
+                >Municipio <span class="text-red-500">*</span></label
               >
-              <input
-                type="text"
-                formControlName="ciudad"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
-              />
+              <select
+                formControlName="municipio"
+                (change)="onMunicipioChange()"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+              >
+                <option value="">Seleccione Municipio</option>
+                @for (m of municipios; track m.id) {
+                <option [value]="m.id">{{ m.nombre }}</option>
+                }
+              </select>
             </div>
 
-            <!-- Municipio/Parroquia -->
+            <!-- Parroquia -->
             <div>
               <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Municipio / Parroquia</label
+                >Parroquia <span class="text-red-500">*</span></label
               >
-              <input
-                type="text"
-                formControlName="municipio_parroquia"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
-              />
+              <select
+                formControlName="parroquia"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+                [disabled]="!parroquias.length"
+              >
+                <option value="">Seleccione Parroquia</option>
+                @for (p of parroquias; track p.id) {
+                <option [value]="p.id">{{ p.nombre }}</option>
+                }
+              </select>
             </div>
 
             <!-- Dirección Vivienda -->
             <div class="md:col-span-2">
               <label class="block text-xs font-bold text-gray-700 mb-1"
-                >Dirección de Vivienda</label
+                >Dirección Detallada <span class="text-red-500">*</span></label
               >
               <textarea
                 formControlName="direccion_vivienda"
                 rows="2"
-                class="w-full border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
+                class="w-full border-gray-300 rounded text-sm focus:ring-vinotinto focus:border-vinotinto"
+                placeholder="Av. Principal, Sector..."
               ></textarea>
             </div>
 
@@ -228,9 +216,9 @@ import {
               <button
                 type="submit"
                 [disabled]="registroForm.invalid"
-                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded text-sm shadow transition-colors disabled:opacity-50"
+                class="bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-2 px-6 rounded text-sm shadow transition-colors disabled:opacity-50"
               >
-                REGISTRARSE
+                FINALIZAR REGISTRO
               </button>
             </div>
           </form>
@@ -259,27 +247,34 @@ import {
 export class Registro {
   @Output() close = new EventEmitter<void>();
   registroForm: FormGroup;
+  municipios = MUNICIPIOS_MERIDA;
+  parroquias: Parroquia[] = [];
 
   constructor(private fb: FormBuilder) {
     this.registroForm = this.fb.group({
       ci: ['', Validators.required],
+      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      telefono: [''],
-      fecha_nac: [''],
+      telefono: ['', Validators.required],
       sexo: [''],
-      estado_civil: [''],
-      ciudad: ['', Validators.minLength(3)],
-      municipio_parroquia: [''],
-      direccion_vivienda: [''],
+      municipio: ['', Validators.required],
+      parroquia: ['', Validators.required],
+      direccion_vivienda: ['', Validators.required],
     });
+  }
+
+  onMunicipioChange() {
+    const municipioId = this.registroForm.get('municipio')?.value;
+    const municipio = this.municipios.find((m) => m.id === municipioId);
+    this.parroquias = municipio ? municipio.parroquias : [];
+    this.registroForm.get('parroquia')?.setValue('');
   }
 
   onSubmit() {
     if (this.registroForm.valid) {
       console.log('Registro data:', this.registroForm.value);
-      // Implementar lógica de registro
+      // Implementar lógica de registro con municipio y parroquia
     }
   }
 }

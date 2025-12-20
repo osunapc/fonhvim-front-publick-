@@ -20,7 +20,7 @@ import {
       >
         <!-- Header del Modal -->
         <div
-          class="bg-blue-900 p-4 flex justify-between items-center text-white"
+          class="bg-vinotinto p-4 flex justify-between items-center text-white"
         >
           <h3 class="font-bold tracking-wide">INGRESO AL SISTEMA</h3>
           <button
@@ -86,7 +86,7 @@ import {
                 <input
                   type="email"
                   formControlName="email"
-                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-vinotinto focus:border-vinotinto text-sm"
                   placeholder="ejemplo@fonhvim.gob.ve"
                 />
               </div>
@@ -117,7 +117,7 @@ import {
                 <input
                   type="password"
                   formControlName="password"
-                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-vinotinto focus:border-vinotinto text-sm"
                   placeholder="••••••••"
                 />
               </div>
@@ -126,7 +126,7 @@ import {
             <button
               type="submit"
               [disabled]="loginForm.invalid"
-              class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-md shadow transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+              class="w-full bg-vinotinto hover:bg-vinotinto-hover text-white font-bold py-2 px-4 rounded-md shadow transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-4"
             >
               INGRESAR
             </button>

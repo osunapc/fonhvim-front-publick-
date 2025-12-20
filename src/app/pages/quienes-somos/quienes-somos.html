@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-gray-50 flex flex-col font-sans relative">
+  <app-encabezado></app-encabezado>
+  <app-barra-navegacion></app-barra-navegacion>
+
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="bg-white rounded-xl shadow-sm p-8 border border-slate-100">
+      <h1 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-4">
+        Quiénes Somos
+      </h1>
+
+      <div class="prose prose-slate max-w-none">
+        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+          El Fondo para el Desarrollo de Hábitat y Vivienda del Estado Mérida
+          (FONHVIM) es el ente rector de las políticas habitacionales en el
+          estado bolivariano de Mérida.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          <div class="p-6 bg-slate-50 rounded-lg border border-slate-100">
+            <h2 class="text-xl font-bold text-slate-800 mb-3">Misión</h2>
+            <p class="text-slate-600">
+              Garantizar el derecho a una vivienda digna y un hábitat saludable
+              para todas las familias merideñas, a través de programas de
+              construcción, sustitución y mejoras de vivienda.
+            </p>
+          </div>
+
+          <div class="p-6 bg-slate-50 rounded-lg border border-slate-100">
+            <h2 class="text-xl font-bold text-slate-800 mb-3">Visión</h2>
+            <p class="text-slate-600">
+              Ser la institución líder en gestión habitacional, reconocida por
+              su eficiencia, transparencia y compromiso social con el bienestar
+              del pueblo merideño.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 mt-auto">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>&copy; {{ currentYear }} FONHVIM. Todos los derechos reservados.</p>
+      <p class="mt-2 text-slate-400">Gobernación del Estado Mérida</p>
+    </div>
+  </footer>
+</div>

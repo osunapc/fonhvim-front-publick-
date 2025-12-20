@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   template: `
     <header
-      class="relative bg-gradient-to-r from-blue-900 to-blue-700 h-32 md:h-40 overflow-hidden shadow-lg"
+      class="relative bg-gradient-to-r from-vinotinto to-vinotinto-hover h-32 md:h-40 overflow-hidden shadow-lg"
     >
       <!-- Background pattern/overlay -->
       <div

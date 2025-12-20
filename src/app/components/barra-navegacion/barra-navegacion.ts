@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-barra-navegacion',
   standalone: true,
@@ -35,28 +34,28 @@ import { Component } from '@angular/core';
             class="hidden md:flex space-x-8 mx-auto font-medium text-gray-700"
           >
             <a
-              href="#"
-              class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors py-2 px-1"
+              href="/"
+              class="hover:text-vinotinto border-b-2 border-transparent hover:border-vinotinto transition-colors py-2 px-1 text-sm tracking-wide"
               >INICIO</a
             >
             <a
-              href="#"
-              class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors py-2 px-1"
+              href="/organigrama"
+              class="hover:text-vinotinto border-b-2 border-transparent hover:border-vinotinto transition-colors py-2 px-1 text-sm tracking-wide"
               >ORGANIGRAMA</a
             >
             <a
-              href="#"
-              class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors py-2 px-1"
+              href="/quienes-somos"
+              class="hover:text-vinotinto border-b-2 border-transparent hover:border-vinotinto transition-colors py-2 px-1 text-sm tracking-wide"
               >QUIÉNES SOMOS</a
             >
             <a
-              href="#"
-              class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors py-2 px-1"
+              href="/servicios"
+              class="hover:text-vinotinto border-b-2 border-transparent hover:border-vinotinto transition-colors py-2 px-1 text-sm tracking-wide"
               >SERVICIOS</a
             >
             <a
-              href="#"
-              class="hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors py-2 px-1"
+              href="/galeria"
+              class="hover:text-vinotinto border-b-2 border-transparent hover:border-vinotinto transition-colors py-2 px-1 text-sm tracking-wide"
               >GALERÍA</a
             >
           </div>
