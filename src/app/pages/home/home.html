@@ -1,0 +1,31 @@
+<div class="min-h-screen bg-gray-50 flex flex-col font-sans relative">
+      <app-encabezado></app-encabezado>
+      <app-barra-navegacion></app-barra-navegacion>
+    
+      <main class="flex-grow container mx-auto px-4 py-8">
+        <app-seccion-principal
+          (openLogin)="showLogin = true"
+          (openRegister)="showRegister = true"
+          >
+        </app-seccion-principal>
+      </main>
+    
+      <footer class="bg-slate-800 text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center text-sm">
+          <p>
+            &copy; {{ currentYear }} FONHVIM. Todos los derechos reservados.
+          </p>
+          <p class="mt-2 text-slate-400">Gobernación del Estado Mérida</p>
+        </div>
+      </footer>
+    
+      <!-- Modales -->
+      @if (showLogin) {
+        <app-login (close)="showLogin = false"></app-login>
+      }
+      @if (showRegister) {
+        <app-registro
+          (close)="showRegister = false"
+        ></app-registro>
+      }
+    </div>
