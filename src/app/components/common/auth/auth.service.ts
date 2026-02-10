@@ -25,7 +25,7 @@ export class AuthService {
       .pipe(
         tap((response) => {
           this._storage.set('session', JSON.stringify(response));
-        })
+        }),
       );
   }
 
@@ -49,17 +49,7 @@ export class AuthService {
     return of(null);
   }
 
-  register(
-    username: string,
-    email: string,
-    password: string,
-    ciudad: string
-  ): Observable<any> {
-    return this.http.post(`${environment.API_URL}/register`, {
-      username,
-      email,
-      password,
-      ciudad,
-    });
+  register(data: any): Observable<any> {
+    return this.http.post(`${environment.API_URL}/register`, data);
   }
 }

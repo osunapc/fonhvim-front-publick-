@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../components/common/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,10 @@ import {
 })
 export class Login {
   @Output() close = new EventEmitter<void>();
+  @Output() openRegister = new EventEmitter<void>();
   loginForm: FormGroup;
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -27,8 +31,22 @@ export class Login {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login data:', this.loginForm.value);
-      // Implementar lógica de autenticación aquí
+      const { email, password } = this.loginForm.value;
+      console.log('Intentando login:', email);
+
+      this.authService.login(email, password).subscribe({
+        next: (response: any) => {
+          console.log('Login exitoso:', response);
+          this.close.emit();
+          this.router.navigateByUrl('/solicitudes');
+        },
+        error: (err: any) => {
+          console.error('Error en login:', err);
+          alert(
+            'Error de autenticación: Credenciales inválidas o servidor no disponible.',
+          );
+        },
+      });
     }
   }
 }

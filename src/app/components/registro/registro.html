@@ -164,7 +164,7 @@
           >
             <option value="">Seleccione Municipio</option>
             @for (m of municipios; track m.id) {
-            <option [value]="m.id">{{ m.nombre }}</option>
+              <option [value]="m.id">{{ m.nombre }}</option>
             }
           </select>
         </div>
@@ -178,11 +178,10 @@
           <select
             formControlName="parroquia"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none disabled:opacity-50"
-            [disabled]="!parroquias.length"
           >
             <option value="">Seleccione Parroquia</option>
             @for (p of parroquias; track p.id) {
-            <option [value]="p.id">{{ p.nombre }}</option>
+              <option [value]="p.id">{{ p.nombre }}</option>
             }
           </select>
         </div>
@@ -203,15 +202,29 @@
 
         <!-- Botones -->
         <div
-          class="md:col-span-2 flex justify-end gap-4 mt-6 pt-6 border-t border-slate-100"
+          class="md:col-span-2 flex justify-end flex-wrap gap-4 mt-6 pt-6 border-t border-slate-100"
         >
           <button
             type="button"
             (click)="close.emit()"
-            class="text-slate-500 hover:text-slate-700 font-bold py-2 px-6 rounded text-xs transition-all uppercase tracking-widest"
+            class="text-slate-500 hover:text-slate-700 font-bold py-2 px-6 rounded text-xs transition-all uppercase tracking-widest flex items-center gap-2"
           >
-            CANCELAR
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              ></path>
+            </svg>
+            Regresar a inicio
           </button>
+
           <button
             type="submit"
             [disabled]="registroForm.invalid"
@@ -219,6 +232,19 @@
           >
             FINALIZAR REGISTRO
           </button>
+        </div>
+
+        <div class="md:col-span-2 text-center mt-4">
+          <p class="text-xs text-slate-500">
+            ¿Ya tienes una cuenta?
+            <button
+              type="button"
+              (click)="openLogin.emit()"
+              class="text-vinotinto font-bold hover:underline focus:outline-none"
+            >
+              Inicia sesión aquí
+            </button>
+          </p>
         </div>
       </form>
     </div>

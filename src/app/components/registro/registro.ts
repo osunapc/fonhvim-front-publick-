@@ -1,15 +1,17 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   MUNICIPIOS_MERIDA,
   Municipio,
   Parroquia,
 } from '../../common/constants/geografia-merida';
+import { AuthService } from '../common/auth/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -20,9 +22,12 @@ import {
 })
 export class Registro {
   @Output() close = new EventEmitter<void>();
+  @Output() openLogin = new EventEmitter<void>();
   registroForm: FormGroup;
   municipios = MUNICIPIOS_MERIDA;
   parroquias: Parroquia[] = [];
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.registroForm = this.fb.group({
@@ -33,7 +38,7 @@ export class Registro {
       telefono: ['', Validators.required],
       sexo: [''],
       municipio: ['', Validators.required],
-      parroquia: ['', Validators.required],
+      parroquia: [{ value: '', disabled: true }, Validators.required],
       direccion_vivienda: ['', Validators.required],
     });
   }
@@ -42,13 +47,50 @@ export class Registro {
     const municipioId = this.registroForm.get('municipio')?.value;
     const municipio = this.municipios.find((m) => m.id === municipioId);
     this.parroquias = municipio ? municipio.parroquias : [];
-    this.registroForm.get('parroquia')?.setValue('');
+
+    const parroquiaControl = this.registroForm.get('parroquia');
+    parroquiaControl?.setValue('');
+
+    if (this.parroquias.length > 0) {
+      parroquiaControl?.enable();
+    } else {
+      parroquiaControl?.disable();
+    }
   }
 
   onSubmit() {
     if (this.registroForm.valid) {
-      console.log('Registro data:', this.registroForm.value);
-      // Implementar lógica de registro con municipio y parroquia
+      const rawData = this.registroForm.value;
+
+      // Mapeo de campos para el backend (RegisterDto)
+      const registerData = {
+        username: rawData.nombre, // Backend espera username
+        email: rawData.email,
+        password: rawData.password,
+        ci: rawData.ci,
+        telefono: rawData.telefono,
+        sexo: rawData.sexo,
+        ciudad: rawData.municipio, // Usamos el nombre del municipio como ciudad por ahora
+        direccion_vivienda: rawData.direccion_vivienda,
+        municipio_parroquia: `${rawData.municipio} - ${rawData.parroquia}`,
+      };
+
+      console.log('Enviando registro:', registerData);
+
+      this.authService.register(registerData).subscribe({
+        next: (response: any) => {
+          console.log('Registro exitoso:', response);
+          alert('Registro completado con éxito. Ya puede iniciar sesión.');
+          this.close.emit();
+        },
+        error: (err: any) => {
+          console.error('Error en registro:', err);
+          alert(
+            'Error al registrarse: ' +
+              (err.error?.message || 'Servidor no disponible'),
+          );
+        },
+      });
     }
   }
 }
