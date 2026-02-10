@@ -28,39 +28,120 @@
   </div>
 
   <form [formGroup]="socialForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <!-- NUEVA SECCION: Tipo de Solicitud -->
+    <section
+      class="mb-10 bg-slate-900 p-8 rounded-xl border border-slate-800 shadow-xl text-white"
+    >
+      <div class="flex items-center gap-4 mb-6">
+        <h4
+          class="text-blue-400 font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+        >
+          Tipo de Trámite a Iniciar
+        </h4>
+        <div class="h-px bg-slate-800 flex-grow"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <label
+          class="relative flex items-center p-4 bg-slate-800/50 rounded-xl border border-slate-700 cursor-pointer hover:bg-slate-800 transition-all"
+        >
+          <input
+            type="radio"
+            formControlName="tipo_solicitud"
+            value="CREDITO"
+            class="w-5 h-5 text-blue-600 mr-3"
+          />
+          <div>
+            <span class="block text-sm font-bold">Crédito Habitacional</span>
+            <span class="block text-[10px] text-gray-400 italic"
+              >Adquisición, mejora o autoconstrucción.</span
+            >
+          </div>
+        </label>
+        <label
+          class="relative flex items-center p-4 bg-slate-800/50 rounded-xl border border-slate-700 cursor-pointer hover:bg-slate-800 transition-all"
+        >
+          <input
+            type="radio"
+            formControlName="tipo_solicitud"
+            value="DEMANDA_NATURAL"
+            class="w-5 h-5 text-blue-600 mr-3"
+          />
+          <div>
+            <span class="block text-sm font-bold"
+              >Solicitud (Demanda Natural)</span
+            >
+            <span class="block text-[10px] text-gray-400 italic"
+              >Donaciones, casos sociales o emergencias.</span
+            >
+          </div>
+        </label>
+      </div>
+    </section>
+
     <!-- Sección 1: Datos del Jefe de Hogar -->
-    <section class="form-section">
-      <div class="section-title">
-        <span>Datos del Jefe de Hogar</span>
+    <section
+      class="mb-10 bg-white p-8 rounded-xl border border-slate-100 shadow-xl"
+    >
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-px bg-slate-200 flex-grow"></div>
+        <h4
+          class="text-vinotinto font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+        >
+          Datos del Jefe de Hogar
+        </h4>
+        <div class="h-px bg-slate-200 flex-grow"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="md:col-span-2">
-          <label>Nombres y Apellidos Completos *</label>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Nombres y Apellidos Completos
+            <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
             formControlName="nombres_apellidos"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="Ej. Pedro Pérez"
           />
         </div>
 
         <div>
-          <label>Cédula de Identidad *</label>
-          <input type="text" formControlName="ci" placeholder="V-12345678" />
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Cédula de Identidad <span class="text-red-500">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="ci"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none uppercase"
+            placeholder="V-12345678"
+          />
         </div>
 
         <div>
-          <label>Teléfono de Contacto *</label>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Teléfono de Contacto <span class="text-red-500">*</span></label
+          >
           <input
             type="text"
             formControlName="telefono"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="0414-0000000"
           />
         </div>
 
         <div>
-          <label>Sexo</label>
-          <select formControlName="sexo">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Sexo</label
+          >
+          <select
+            formControlName="sexo"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
             <option value="">Seleccione</option>
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
@@ -68,8 +149,14 @@
         </div>
 
         <div>
-          <label>Estado Civil</label>
-          <select formControlName="estado_civil">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Estado Civil</label
+          >
+          <select
+            formControlName="estado_civil"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
             <option value="">Seleccione</option>
             <option value="Soltero/a">Soltero/a</option>
             <option value="Casado/a">Casado/a</option>
@@ -82,57 +169,169 @@
     </section>
 
     <!-- Sección 2: Grupo Familiar -->
-    <section class="form-section">
-      <div class="section-title">
-        <span>Grupo Familiar</span>
+    <section
+      class="mb-10 bg-white p-8 rounded-xl border border-slate-100 shadow-xl"
+    >
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-px bg-slate-200 flex-grow"></div>
+        <h4
+          class="text-vinotinto font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+        >
+          Grupo Familiar
+        </h4>
+        <div class="h-px bg-slate-200 flex-grow"></div>
       </div>
 
       <div formArrayName="grupo_familiar" class="space-y-4">
         @for (integrante of grupoFamiliar.controls; track $index) {
-        <div
-          [formGroupName]="$index"
-          class="p-4 bg-slate-50 rounded-lg border border-slate-100 relative group/int"
-        >
-          <button
-            *ngIf="grupoFamiliar.length > 1"
-            (click)="removeIntegrante($index)"
-            class="absolute top-2 right-2 text-slate-300 hover:text-red-500 transition-colors"
+          <div
+            [formGroupName]="$index"
+            class="p-6 bg-slate-50/50 rounded-xl border border-slate-100 relative group/int"
           >
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            <button
+              type="button"
+              *ngIf="grupoFamiliar.length > 1"
+              (click)="removeIntegrante($index)"
+              class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition-colors"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
-          </button>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-            <div>
-              <label>Nombre *</label>
-              <input type="text" formControlName="nombre" class="bg-white" />
-            </div>
-            <div>
-              <label>Apellido *</label>
-              <input type="text" formControlName="apellido" class="bg-white" />
-            </div>
-            <div>
-              <label>Cédula</label>
-              <input type="text" formControlName="cedula" class="bg-white" />
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Nombre <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="nombre"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Apellido <span class="text-red-500">*</span></label
+                >
+                <input
+                  type="text"
+                  formControlName="apellido"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Cédula</label
+                >
+                <input
+                  type="text"
+                  formControlName="cedula"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none uppercase"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Fecha de Nacimiento</label
+                >
+                <input
+                  type="date"
+                  formControlName="fecha_nac"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Edad</label
+                >
+                <input
+                  type="number"
+                  formControlName="edad"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Parentesco</label
+                >
+                <select
+                  formControlName="parentesco"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                >
+                  <option value="">Seleccione</option>
+                  <option value="Hijo/a">Hijo/a</option>
+                  <option value="Cónyuge">Cónyuge</option>
+                  <option value="Padre/Madre">Padre/Madre</option>
+                  <option value="Hermano/a">Hermano/a</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Escolaridad</label
+                >
+                <select
+                  formControlName="escolaridad"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                >
+                  <option value="">Seleccione</option>
+                  <option value="Ninguna">Ninguna</option>
+                  <option value="Primaria">Primaria</option>
+                  <option value="Secundaria">Secundaria</option>
+                  <option value="Universitaria">Universitaria</option>
+                  <option value="Postgrado">Postgrado</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Ingreso Mensual (Bs.)</label
+                >
+                <input
+                  type="number"
+                  formControlName="ingreso_mensual"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+                  >Ocupación / Obs.</label
+                >
+                <input
+                  type="text"
+                  formControlName="ocupacion_observaciones"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                />
+              </div>
             </div>
           </div>
-        </div>
         }
       </div>
 
-      <button type="button" (click)="addIntegrante()" class="btn-add mt-4">
+      <button
+        type="button"
+        (click)="addIntegrante()"
+        class="text-vinotinto hover:text-vinotinto-hover font-bold text-xs flex items-center gap-2 transition-all uppercase tracking-widest mt-6"
+      >
         <svg
-          class="w-4 h-4"
+          class="w-5 h-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -148,25 +347,44 @@
       </button>
     </section>
 
-    <!-- Sección 3: Vivienda y Socioeconómicos -->
-    <section class="form-section">
-      <div class="section-title">
-        <span>Vivienda y Situación Social</span>
+    <!-- Sección 3: Vivienda y Socioeconómicos Avanzados -->
+    <section
+      class="mb-10 bg-white p-8 rounded-xl border border-slate-100 shadow-xl"
+    >
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-px bg-slate-200 flex-grow"></div>
+        <h4
+          class="text-vinotinto font-bold text-xs uppercase tracking-widest whitespace-nowrap"
+        >
+          Situación Habitacional y Socioeconómica
+        </h4>
+        <div class="h-px bg-slate-200 flex-grow"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="md:col-span-2">
-          <label>Dirección de Vivienda Actual *</label>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Dirección de Vivienda Actual
+            <span class="text-red-500">*</span></label
+          >
           <textarea
             formControlName="direccion_vivienda"
-            rows="2"
+            rows="3"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none resize-none"
             placeholder="Av, Sector, Casa Nº..."
           ></textarea>
         </div>
 
         <div>
-          <label>Tenencia de la Vivienda</label>
-          <select formControlName="tenencia_vivienda">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Tenencia de la Vivienda</label
+          >
+          <select
+            formControlName="tenencia_vivienda"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
             <option value="">Seleccione</option>
             <option value="Propia">Propia</option>
             <option value="Alquilada">Alquilada</option>
@@ -177,22 +395,230 @@
         </div>
 
         <div>
-          <label>Ingreso Mensual del Hogar (Aproximado)</label>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Tipo de Familia</label
+          >
+          <input
+            type="text"
+            formControlName="tipo_familia"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="Ej. Nuclear, Extendida"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >¿Paga Alquiler?</label
+          >
+          <select
+            formControlName="paga_alquiler"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Sí</option>
+          </select>
+        </div>
+
+        <div *ngIf="socialForm.get('paga_alquiler')?.value">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Monto de Alquiler (Bs.)</label
+          >
           <input
             type="number"
-            formControlName="ingreso_mensual_hogar"
-            placeholder="Bs."
+            formControlName="monto_alquiler"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
           />
         </div>
 
         <div class="md:col-span-2">
-          <label>Condiciones Generales de la Vivienda (Observaciones)</label>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Dirección de Trabajo del Jefe de Hogar</label
+          >
+          <input
+            type="text"
+            formControlName="direccion_trabajo_jefe"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Ingreso Cesta Ticket (Bs.)</label
+          >
+          <input
+            type="number"
+            formControlName="ingreso_mensual_cestatikes"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Ingreso Mensual del Hogar (Total Bs.)</label
+          >
+          <input
+            type="number"
+            formControlName="ingreso_mensual_hogar"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div class="md:col-span-2">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Otros Ingresos / Especificar</label
+          >
+          <textarea
+            formControlName="otros_ingresos"
+            rows="2"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none resize-none"
+          ></textarea>
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Integrantes que trabajan</label
+          >
+          <input
+            type="number"
+            formControlName="integrantes_trabajan"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Adultos Mayores</label
+          >
+          <input
+            type="number"
+            formControlName="adultos_mayores"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Menores en el núcleo</label
+          >
+          <input
+            type="number"
+            formControlName="menores_grupo_familiar"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Personas con Discapacidad</label
+          >
+          <input
+            type="number"
+            formControlName="personas_discapacidad"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >¿Registrado en FONHVIM?</label
+          >
+          <select
+            formControlName="registro_fonhvim"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Sí</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >¿Inscrito en FAOV / FAVV?</label
+          >
+          <select
+            formControlName="inscrito_faov_favv"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+          >
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Sí</option>
+          </select>
+        </div>
+
+        <div class="md:col-span-2">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Condiciones Generales de la Vivienda (Observaciones)</label
+          >
           <textarea
             formControlName="condiciones_vivienda"
-            rows="3"
+            rows="4"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none resize-none"
             placeholder="Describa el estado de paredes, techo, servicios..."
           ></textarea>
         </div>
+
+        <!-- CAMPOS DEMANDA NATURAL (SOLO SI APLICA) -->
+        <ng-container
+          *ngIf="socialForm.get('tipo_solicitud')?.value === 'DEMANDA_NATURAL'"
+        >
+          <div
+            class="md:col-span-2 mt-4 px-6 py-4 bg-vinotinto/5 rounded-2xl border border-vinotinto/10"
+          >
+            <h4
+              class="text-xs font-bold text-vinotinto uppercase tracking-widest mb-4"
+            >
+              Información del Poder Popular
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  class="block text-[10px] font-bold text-slate-500 uppercase mb-1"
+                  >Nombre Consejo Comunal</label
+                >
+                <input
+                  type="text"
+                  formControlName="consejo_comunal"
+                  class="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-sm"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[10px] font-bold text-slate-500 uppercase mb-1"
+                  >Nro. Carnet de la Patria</label
+                >
+                <input
+                  type="text"
+                  formControlName="nro_carnet_patria"
+                  class="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-sm"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[10px] font-bold text-slate-500 uppercase mb-1"
+                  >Serial Carnet de la Patria</label
+                >
+                <input
+                  type="text"
+                  formControlName="serial_carnet_patria"
+                  class="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-sm"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </section>
 

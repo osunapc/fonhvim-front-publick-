@@ -13,33 +13,7 @@ import {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './formulario-instrumento-social.html',
-  styles: [
-    `
-      .form-section {
-        @apply mb-8 bg-white p-6 rounded-xl border border-slate-100 shadow-sm;
-      }
-      .section-title {
-        @apply text-vinotinto font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-3;
-      }
-      .section-title::after {
-        content: '';
-        @apply h-px bg-slate-100 flex-grow;
-      }
-      label {
-        @apply block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide;
-      }
-      input,
-      select,
-      textarea {
-        @apply w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm 
-             focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white 
-             transition-all outline-none;
-      }
-      .btn-add {
-        @apply text-vinotinto hover:text-vinotinto-hover font-bold text-xs flex items-center gap-2 transition-colors;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class FormularioInstrumentoSocial implements OnInit {
   @Output() back = new EventEmitter<void>();
@@ -58,32 +32,52 @@ export class FormularioInstrumentoSocial implements OnInit {
       edad: [null],
       telefono: ['', Validators.required],
 
+      coordenadas: [''],
+      fecha: [new Date().toISOString().split('T')[0]],
+
       // Ubicación y Vivienda
       direccion_vivienda: ['', Validators.required],
       municipio_parroquia: ['', Validators.required],
       tenencia_vivienda: [''],
+      tipo_familia: [''],
       condiciones_vivienda: [''],
 
       // Grupo Familiar
       grupo_familiar: this.fb.array([]),
+      integrantes_grupo_familiar: [1],
 
       // Socioeconómicos
       ocupacion_jefe: [''],
       nivel_instruccion: [''],
+      direccion_trabajo_jefe: [''],
+      ingreso_mensual_cestatikes: [0],
+      otros_ingresos: [''],
       ingreso_mensual_hogar: [null],
       integrantes_trabajan: [0],
       adultos_mayores: [0],
       menores_grupo_familiar: [0],
       personas_discapacidad: [0],
 
-      // Observaciones
-      observaciones: [''],
-      tipo_solicitud: ['Construcción de Vivienda'],
+      // Pagos y Registros
+      paga_alquiler: [false],
+      monto_alquiler: [0],
+      registro_fonhvim: [false],
+      fecha_registro: [''],
+      inscrito_faov_favv: [false],
+
+      // Campos Extra para Demanda Natural
+      consejo_comunal: [''],
+      nro_carnet_patria: [''],
+      serial_carnet_patria: [''],
+
+      // Observaciones y Firmas
+      tipo_solicitud: ['CREDITO', Validators.required],
+      firma_encuestado: [''],
     });
   }
 
   ngOnInit() {
-    this.addIntegrante(); // Iniciamos con uno
+    this.addIntegrante();
   }
 
   get grupoFamiliar() {
@@ -92,10 +86,15 @@ export class FormularioInstrumentoSocial implements OnInit {
 
   addIntegrante() {
     const integrante = this.fb.group({
+      numero: [this.grupoFamiliar.length + 1],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       cedula: [''],
+      fecha_nac: [''],
       parentesco: [''],
+      escolaridad: [''],
+      ingreso_mensual: [0],
+      ocupacion_observaciones: [''],
       edad: [null],
     });
     this.grupoFamiliar.push(integrante);

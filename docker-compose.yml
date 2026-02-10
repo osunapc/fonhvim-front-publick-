@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  publico:
+    build:
+      context: .
+      args:
+        - API_URL=${API_URL:-http://localhost:3000}
+    container_name: fonhvim-publico
+    restart: always
+    ports:
+      - "8080:80"

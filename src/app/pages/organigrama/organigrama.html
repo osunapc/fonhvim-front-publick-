@@ -4,46 +4,338 @@
 
   <main class="flex-grow container mx-auto px-4 py-8">
     <div
-      class="bg-white rounded-xl shadow-sm p-8 border border-slate-100 text-center"
+      class="bg-white rounded-xl shadow-sm p-12 border border-slate-100 text-center"
     >
-      <h1 class="text-3xl font-bold text-vinotinto mb-6 border-b pb-4">
+      <h1
+        class="text-3xl font-bold text-vinotinto mb-2 uppercase tracking-wide"
+      >
         Estructura Organizativa
       </h1>
+      <div class="w-24 h-1 bg-vinotinto mx-auto mb-4"></div>
+      <p
+        class="text-slate-500 text-sm font-medium mb-12 uppercase tracking-widest"
+      >
+        FONHVIM - Gobernación del Estado Mérida
+      </p>
 
-      <div class="mt-12 max-w-4xl mx-auto">
-        <div
-          class="p-6 bg-vinotinto text-white rounded-lg inline-block mb-8 shadow-md"
-        >
-          <h2 class="text-xl font-bold">Presidencia</h2>
-        </div>
-
-        <div class="flex flex-col items-center">
-          <div class="h-8 w-px bg-slate-200"></div>
-          <div class="w-full max-w-2xl grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="p-4 bg-slate-100 rounded border border-slate-200">
-              <h3 class="text-vinotinto font-bold">Recursos Humanos</h3>
-            </div>
-            <div class="p-4 bg-slate-100 rounded border border-slate-200">
-              <h3 class="text-vinotinto font-bold">Administración</h3>
-            </div>
-            <div class="p-4 bg-slate-100 rounded border border-slate-200">
-              <h3 class="text-vinotinto font-bold">Jurídico</h3>
-            </div>
+      <div class="max-w-6xl mx-auto flex flex-col items-center">
+        <!-- NIVEL SUPERIOR -->
+        <div class="flex flex-col items-center w-full mb-16">
+          <div class="flex items-center gap-6 mb-8 w-full max-w-5xl">
+            <div class="h-px bg-slate-200 flex-grow"></div>
+            <h2
+              class="text-xs font-bold text-slate-400 uppercase tracking-[0.4em]"
+            >
+              Nivel Superior
+            </h2>
+            <div class="h-px bg-slate-200 flex-grow"></div>
           </div>
 
-          <div class="h-8 w-px bg-slate-200 mt-4"></div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+            <div
+              class="p-6 bg-slate-800 text-white rounded-lg shadow-md border-b-4 border-vinotinto text-center"
+            >
+              <span
+                class="text-[10px] text-slate-400 block mb-2 uppercase tracking-widest"
+                >Gobernación</span
+              >
+              <h3 class="font-bold text-sm uppercase">Despacho Gobernador</h3>
+            </div>
+            <div
+              class="p-6 bg-slate-800 text-white rounded-lg shadow-md border-b-4 border-vinotinto text-center"
+            >
+              <span
+                class="text-[10px] text-slate-400 block mb-2 uppercase tracking-widest"
+                >Ente Adscrito</span
+              >
+              <h3 class="font-bold text-sm uppercase leading-tight">
+                Dirección de Infraestructura
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-slate-800 text-white rounded-lg shadow-md border-b-4 border-vinotinto text-center"
+            >
+              <span
+                class="text-[10px] text-slate-400 block mb-2 uppercase tracking-widest"
+                >Máxima Autoridad</span
+              >
+              <h3 class="font-bold text-sm uppercase">Consejo Directivo</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONECTOR PRINCIPAL -->
+        <div class="h-16 w-px bg-slate-300 relative">
           <div
-            class="p-6 bg-slate-50 rounded-lg border border-slate-200 w-full max-w-sm"
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-slate-400"
+          ></div>
+        </div>
+
+        <!-- NIVEL EJECUTIVO -->
+        <div class="flex flex-col items-center w-full mb-16">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start relative pt-8"
           >
-            <h3 class="font-bold text-vinotinto">Gerencia de Proyectos</h3>
+            <!-- Linea horizontal rígida -->
+            <div
+              class="hidden md:block absolute top-[44px] left-[25%] right-[25%] h-[2px] bg-slate-300 -z-10"
+            ></div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="p-10 bg-vinotinto text-white rounded-lg shadow-2xl border-2 border-white/20 w-72 text-center ring-1 ring-vinotinto/20"
+              >
+                <span
+                  class="text-[10px] text-white/50 block mb-3 tracking-[0.3em] font-bold"
+                  >NIVEL EJECUTIVO</span
+                >
+                <h3 class="font-bold text-2xl uppercase tracking-widest">
+                  Presidencia
+                </h3>
+              </div>
+              <div class="w-px h-16 bg-slate-300"></div>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div
+                class="p-8 bg-white border-2 border-slate-200 rounded-lg shadow-lg w-64 text-center mt-4"
+              >
+                <span
+                  class="text-[10px] text-slate-400 block mb-2 uppercase font-black tracking-widest"
+                  >Control Interno</span
+                >
+                <h3
+                  class="font-bold text-slate-700 uppercase text-sm tracking-wide"
+                >
+                  Auditoría Interna
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEPENDENCIAS DIRECTAS -->
+        <div class="flex flex-col items-center w-full mb-20">
+          <div class="flex items-center gap-6 mb-10 w-full max-w-4xl">
+            <div class="h-px bg-slate-200 flex-grow"></div>
+            <h2
+              class="text-[10px] font-black text-slate-400 uppercase tracking-[0.6em]"
+            >
+              Dependencia Directa de Presidencia
+            </h2>
+            <div class="h-px bg-slate-200 flex-grow"></div>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 w-full max-w-6xl"
+          >
+            <div
+              class="p-5 bg-white border border-slate-200 rounded-lg shadow-sm text-center border-t-4 border-t-slate-400"
+            >
+              <span
+                class="text-[9px] font-black text-slate-400 uppercase block mb-2"
+                >Coordinación</span
+              >
+              <h3
+                class="text-xs font-bold text-slate-800 uppercase tracking-tight"
+              >
+                Despacho
+              </h3>
+            </div>
+            <div
+              class="p-5 bg-white border border-slate-200 rounded-lg shadow-sm text-center border-t-4 border-t-slate-400"
+            >
+              <span
+                class="text-[9px] font-black text-slate-400 uppercase block mb-2"
+                >Unidad</span
+              >
+              <h3
+                class="text-xs font-bold text-slate-800 uppercase tracking-tight"
+              >
+                Sala Situacional
+              </h3>
+            </div>
+            <div
+              class="p-5 bg-white border border-slate-200 rounded-lg shadow-sm text-center border-t-4 border-t-slate-400"
+            >
+              <span
+                class="text-[9px] font-black text-slate-400 uppercase block mb-2"
+                >Coordinación</span
+              >
+              <h3
+                class="text-xs font-bold text-slate-800 uppercase tracking-tight"
+              >
+                General
+              </h3>
+            </div>
+            <div
+              class="p-5 bg-white border border-slate-200 rounded-lg shadow-sm text-center border-t-4 border-t-slate-400"
+            >
+              <span
+                class="text-[9px] font-black text-slate-400 uppercase block mb-2"
+                >Comisión</span
+              >
+              <h3
+                class="text-xs font-bold text-slate-800 uppercase tracking-tight leading-tight"
+              >
+                Contrataciones
+              </h3>
+            </div>
+            <div
+              class="p-5 bg-white border border-slate-200 rounded-lg shadow-sm text-center border-t-4 border-t-slate-400"
+            >
+              <span
+                class="text-[9px] font-black text-slate-400 uppercase block mb-2"
+                >Gerencia</span
+              >
+              <h3
+                class="text-xs font-bold text-slate-800 uppercase tracking-tight"
+              >
+                Talento Humano
+              </h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- OFICINAS ADJUNTAS -->
+        <div
+          class="flex flex-col items-center w-full bg-slate-50 border-y border-slate-100 p-16"
+        >
+          <div class="flex flex-col items-center mb-12">
+            <h2
+              class="text-sm font-bold text-slate-500 uppercase tracking-[0.4em] mb-4"
+            >
+              Unidades y Gerencias Adjuntas
+            </h2>
+            <div class="w-16 h-1 bg-slate-300"></div>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl"
+          >
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Gerencia de Planificación
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Unidad de Presupuesto
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider leading-relaxed"
+              >
+                Gerencia de Administración y Finanzas
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Unidad Informática
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Servicios Generales
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Consultoría Jurídica
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Oficina de Apoyo
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Gerencia Técnica
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Gerencia Sociales
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Gerencia de Recaudación
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider leading-relaxed"
+              >
+                Oficina de Caja y Recaudación
+              </h3>
+            </div>
+            <div
+              class="p-6 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-center shadow-sm h-24"
+            >
+              <h3
+                class="text-[11px] font-bold text-slate-700 uppercase tracking-wider"
+              >
+                Gerencia de Oficina
+              </h3>
+            </div>
           </div>
         </div>
       </div>
 
-      <p class="mt-12 text-slate-500 italic">
-        "Comprometidos con la eficiencia administrativa para el bienestar de
-        Mérida"
-      </p>
+      <!-- Notas Institucionales -->
+      <div
+        class="mt-16 pt-12 border-t border-slate-100 max-w-4xl mx-auto text-center"
+      >
+        <p
+          class="text-slate-400 text-[10px] leading-relaxed uppercase tracking-[0.2em] font-medium"
+        >
+          Diagrama de Estructura Organizativa Institucional
+          <br />FONHVIM - Vigencia 2024-2025
+        </p>
+      </div>
     </div>
   </main>
 

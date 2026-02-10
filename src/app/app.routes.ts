@@ -22,6 +22,14 @@ export const routes: Routes = [
       import('./pages/solicitudes/solicitudes').then((m) => m.Solicitudes),
   },
   {
+    path: 'consultar',
+    canActivate: [publicGuard],
+    loadComponent: () =>
+      import('./pages/consulta-tramite/consulta-tramite').then(
+        (m) => m.ConsultaTramite,
+      ),
+  },
+  {
     path: 'quienes-somos',
     canActivate: [publicGuard],
     loadComponent: () =>

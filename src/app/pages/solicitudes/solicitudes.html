@@ -7,9 +7,17 @@
       <nav class="p-4 space-y-2">
         <a
           href="/solicitudes"
-          class="flex items-center space-x-3 p-3 bg-vinotinto text-white rounded-lg transition-all"
+          class="flex items-center space-x-3 p-3 text-slate-600 hover:bg-slate-50 rounded-lg transition-all"
+          [class.bg-vinotinto]="view !== 'list'"
+          [class.text-white]="view !== 'list'"
         >
           <span class="font-medium">Mis Solicitudes</span>
+        </a>
+        <a
+          href="/consultar"
+          class="flex items-center space-x-3 p-3 text-slate-600 hover:bg-slate-50 rounded-lg transition-all"
+        >
+          <span class="font-medium">Consultar Estatus</span>
         </a>
         <a
           href="/"
@@ -23,58 +31,58 @@
     <main class="flex-1 p-8 overflow-y-auto">
       <div class="max-w-5xl mx-auto">
         <!-- VISTA: LISTADO -->
-        @if (view === 'list') {
-        <header class="flex justify-between items-center mb-8">
-          <div>
-            <h1 class="text-2xl font-bold text-vinotinto">
-              Panel de Solicitudes
-            </h1>
-            <p class="text-slate-500">Gestiona tus trámites habitacionales</p>
-          </div>
-          <button
-            (click)="setViewState('selector')"
-            class="bg-vinotinto text-white px-6 py-2 rounded-lg font-medium hover:bg-vinotinto-hover transition-all shadow-md active:scale-95"
-          >
-            Nueva Solicitud
-          </button>
-        </header>
-
-        <div
-          class="bg-white rounded-xl shadow-sm border border-slate-200 divide-y divide-slate-100"
-        >
-          <div class="p-12 text-center">
-            <div
-              class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
-              <span class="text-3xl text-slate-400">📋</span>
+        @if (view === "list") {
+          <header class="flex justify-between items-center mb-8">
+            <div>
+              <h1 class="text-2xl font-bold text-vinotinto">
+                Panel de Solicitudes
+              </h1>
+              <p class="text-slate-500">Gestiona tus trámites habitacionales</p>
             </div>
-            <h3 class="text-lg font-medium text-vinotinto">
-              No tienes solicitudes activas
-            </h3>
-            <p class="text-slate-500 max-w-xs mx-auto mt-2 text-sm">
-              Inicia una nueva solicitud para comenzar tu trámite de vivienda o
-              servicios.
-            </p>
+            <button
+              (click)="setViewState('selector')"
+              class="bg-vinotinto text-white px-6 py-2 rounded-lg font-medium hover:bg-vinotinto-hover transition-all shadow-md active:scale-95"
+            >
+              Nueva Solicitud
+            </button>
+          </header>
+
+          <div
+            class="bg-white rounded-xl shadow-sm border border-slate-200 divide-y divide-slate-100"
+          >
+            <div class="p-12 text-center">
+              <div
+                class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
+                <span class="text-3xl text-slate-400">📋</span>
+              </div>
+              <h3 class="text-lg font-medium text-vinotinto">
+                No tienes solicitudes activas
+              </h3>
+              <p class="text-slate-500 max-w-xs mx-auto mt-2 text-sm">
+                Inicia una nueva solicitud para comenzar tu trámite de vivienda
+                o servicios.
+              </p>
+            </div>
           </div>
-        </div>
         }
 
         <!-- VISTA: SELECTOR -->
-        @if (view === 'selector') {
-        <app-selector-tramites
-          (select)="handleTramiteSelection($event)"
-          (cancel)="setViewState('list')"
-        >
-        </app-selector-tramites>
+        @if (view === "selector") {
+          <app-selector-tramites
+            (select)="handleTramiteSelection($event)"
+            (cancel)="setViewState('list')"
+          >
+          </app-selector-tramites>
         }
 
         <!-- VISTA: FORMULARIO INSTRUMENTO SOCIAL -->
-        @if (view === 'social-form') {
-        <app-formulario-instrumento-social
-          (back)="setViewState('selector')"
-          (submit)="handleFormSubmit($event)"
-        >
-        </app-formulario-instrumento-social>
+        @if (view === "social-form") {
+          <app-formulario-instrumento-social
+            (back)="setViewState('selector')"
+            (submit)="handleFormSubmit($event)"
+          >
+          </app-formulario-instrumento-social>
         }
       </div>
     </main>

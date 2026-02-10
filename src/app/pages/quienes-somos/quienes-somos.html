@@ -4,36 +4,281 @@
 
   <main class="flex-grow container mx-auto px-4 py-8">
     <div class="bg-white rounded-xl shadow-sm p-8 border border-slate-100">
-      <h1 class="text-3xl font-bold text-vinotinto mb-6 border-b pb-4">
+      <h1
+        class="text-3xl font-bold text-vinotinto mb-2 uppercase tracking-wide text-center"
+      >
         Quiénes Somos
       </h1>
+      <div class="w-24 h-1 bg-vinotinto mx-auto mb-8"></div>
 
-      <div class="prose prose-slate max-w-none">
-        <p class="text-lg text-slate-600 leading-relaxed mb-6">
-          El Fondo para el Desarrollo de Hábitat y Vivienda del Estado Mérida
-          (FONHVIM) es el ente rector de las políticas habitacionales en el
-          estado bolivariano de Mérida.
-        </p>
+      <div class="max-w-4xl mx-auto space-y-12 pb-12">
+        <!-- Reseña y Estrategia -->
+        <section class="prose prose-slate max-w-none">
+          <p class="text-lg text-slate-700 leading-relaxed text-justify">
+            La Gobernación del Estado Mérida tiene como estrategia gubernamental
+            desarrollar de manera eficiente y eficaz su gestión, dando
+            seguimiento a los lineamientos del Gobierno, es así, como desde
+            Agosto 2006 se crea la
+            <span class="font-bold text-vinotinto"
+              >Ley para el Desarrollo Integral de Vivienda y Hábitat del Estado
+              Mérida</span
+            >, dando respuesta al artículo 82 de la Constitución de la República
+            Bolivariana de Venezuela, la cual establece que toda persona debe
+            tener una vivienda adecuada, segura, cómoda e higiénica, con
+            servicios básicos esenciales, con un ambiente armónico que permita
+            el desarrollo de la familia y el hogar.
+          </p>
+          <p class="text-lg text-slate-700 leading-relaxed text-justify mt-4">
+            Es por ello que el Gobierno Regional dando cumplimiento a lo emanado
+            de la constitución, dirige sus políticas a dar soluciones
+            habitacionales a la población merideña.
+          </p>
+        </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div class="p-6 bg-slate-50 rounded-lg border border-slate-100">
-            <h2 class="text-xl font-bold text-vinotinto mb-3">Misión</h2>
-            <p class="text-slate-600">
-              Garantizar el derecho a una vivienda digna y un hábitat saludable
-              para todas las familias merideñas, a través de programas de
-              construcción, sustitución y mejoras de vivienda.
+        <!-- Antecedentes Históricos -->
+        <section class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+          <h2
+            class="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-4"
+          >
+            Antecedentes Históricos
+          </h2>
+          <p
+            class="text-slate-600 leading-relaxed italic border-l-4 border-vinotinto pl-6"
+          >
+            Según Gaceta Oficial del Estado Mérida de fecha 08 de agosto de
+            2006, el Consejo Legislativo del Estado Mérida en uso de sus
+            atribuciones legales decreta la Ley del Fondo para el Desarrollo
+            Integral de Vivienda y Hábitat del Estado Mérida
+            <span class="font-bold text-vinotinto">(FONHVIM)</span>.
+          </p>
+        </section>
+
+        <!-- Misión -->
+        <section>
+          <div class="flex items-center gap-4 mb-6">
+            <h2
+              class="text-xl font-bold text-slate-800 uppercase tracking-widest"
+            >
+              Misión Institucional
+            </h2>
+            <div class="h-px bg-slate-200 flex-grow"></div>
+          </div>
+          <div
+            class="bg-vinotinto p-10 rounded-2xl shadow-xl text-white relative overflow-hidden"
+          >
+            <div class="absolute -right-10 -bottom-10 opacity-10">
+              <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 3L2 12h3v8h14v-8h3L12 3zm0 2.84L19.5 12H17v6H7v-6H4.5L12 5.84zM10 10v2h4v-2h-4z"
+                />
+              </svg>
+            </div>
+            <p
+              class="text-lg leading-relaxed font-medium relative z-10 text-center"
+            >
+              "Ser una organización estatal comprometida a alcanzar el
+              desarrollo integral y sostenido de la vivienda y hábitat,
+              dispuesta a satisfacer las necesidades habitacionales de las
+              familias merideñas, mediante la aplicación de una política de
+              vivienda de interés social acorde con los planes de progreso del
+              Estado, sustentado en la Ley de Régimen Prestacional de Vivienda y
+              Hábitat, y contando con un equipo humano comprometido, capacitado
+              y orgulloso de pertenecer a la institución."
             </p>
           </div>
+        </section>
 
-          <div class="p-6 bg-slate-50 rounded-lg border border-slate-100">
-            <h2 class="text-xl font-bold text-vinotinto mb-3">Visión</h2>
-            <p class="text-slate-600">
-              Ser la institución líder en gestión habitacional, reconocida por
-              su eficiencia, transparencia y compromiso social con el bienestar
-              del pueblo merideño.
-            </p>
+        <!-- Valores Organizacionales -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <h2
+              class="text-xl font-bold text-slate-800 uppercase tracking-widest"
+            >
+              Valores Organizacionales
+            </h2>
+            <div class="h-px bg-slate-200 flex-grow"></div>
           </div>
-        </div>
+
+          <div class="grid grid-cols-1 gap-6">
+            <!-- Valor 1 -->
+            <div
+              class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center font-black text-vinotinto text-xl"
+                >
+                  1
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 uppercase mb-3">
+                    Orientación al servicio de las familias y comunidades
+                  </h3>
+                  <ul class="space-y-2 text-slate-600 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Actitud de respeto y preocupación ante los
+                        requerimientos de las familias y comunidades
+                        merideñas.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span>Investigación constante de sus necesidades.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valor 2 -->
+            <div
+              class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center font-black text-vinotinto text-xl"
+                >
+                  2
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 uppercase mb-3">
+                    Búsqueda constante de la excelencia en la gestión
+                  </h3>
+                  <ul class="space-y-2 text-slate-600 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Acciones diarias orientadas a cumplir con necesidades y
+                        expectativas.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Enfoque en tiempo, costo, calidad y eficiencia.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Consideración por la protección del medio
+                        ambiente.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valor 3 -->
+            <div
+              class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center font-black text-vinotinto text-xl"
+                >
+                  3
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 uppercase mb-3">
+                    Transparencia interna frente a la opinión pública
+                  </h3>
+                  <ul class="space-y-2 text-slate-600 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Apego a la legalidad, criterios técnicos-profesionales
+                        y principios éticos.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Información adecuada a instituciones interesadas y a la
+                        comunidad merideña.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valor 4 -->
+            <div
+              class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center font-black text-vinotinto text-xl"
+                >
+                  4
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 uppercase mb-3">
+                    Compromiso en el desempeño de sus funciones y resultados
+                  </h3>
+                  <ul class="space-y-2 text-slate-600 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span>Actitud de compromiso y responsabilidad.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Visualización del trabajo como parte de un engranaje
+                        mayor.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Elemento clave para el éxito de la gestión
+                        gubernamental.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Valor 5 -->
+            <div
+              class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="flex gap-6">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center font-black text-vinotinto text-xl"
+                >
+                  5
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-800 uppercase mb-3">
+                    Trabajo en equipo y convergencia de esfuerzos
+                  </h3>
+                  <ul class="space-y-2 text-slate-600 text-sm">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Esfuerzos orientados al cumplimiento de los objetivos
+                        gubernamentales.</span
+                      >
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vinotinto mt-1">•</span>
+                      <span
+                        >Unión de objetivos individuales e
+                        institucionales.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </main>

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-
+import { Component, inject } from '@angular/core';
 import { Encabezado } from '../../components/encabezado/encabezado';
 import { SelectorTramites } from '../../components/solicitudes/selector-tramites/selector-tramites';
 import { FormularioInstrumentoSocial } from '../../components/solicitudes/formulario-instrumento-social/formulario-instrumento-social';
 import { CommonModule } from '@angular/common';
+import { PublicSolicitudesService } from '../../common/services/solicitudes.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
   styles: ``,
 })
 export class Solicitudes {
+  private solicitudesService = inject(PublicSolicitudesService);
   currentYear = new Date().getFullYear();
   view: 'list' | 'selector' | 'social-form' = 'list';
 
@@ -33,7 +34,19 @@ export class Solicitudes {
 
   handleFormSubmit(data: any) {
     console.log('Form data submitted:', data);
-    // Aquí se llamaría al servicio de backend creado previamente
-    this.view = 'list';
+    this.solicitudesService.enviarSolicitud(data).subscribe({
+      next: () => {
+        alert(
+          'Su solicitud ha sido enviada exitosamente. En breve recibirá noticias.',
+        );
+        this.view = 'list';
+      },
+      error: (err) => {
+        alert(
+          'Error al enviar solicitud: ' +
+            (err.error?.message || 'Servidor no disponible'),
+        );
+      },
+    });
   }
 }

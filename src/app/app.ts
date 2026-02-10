@@ -9,4 +9,8 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 })
 export class App {
   protected title = 'front-express';
+
+  constructor() {
+    console.log('✅ App Component (Raíz) inicializado');
+  }
 }
