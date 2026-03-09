@@ -54,6 +54,13 @@ export const routes: Routes = [
       import('./pages/galeria/galeria').then((m) => m.Galeria),
   },
   {
+    path: 'reset-password/:token',
+    loadComponent: () =>
+      import('./pages/reset-password/reset-password').then(
+        (m) => m.ResetPasswordComponent,
+      ),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/not-found/not-found').then((m) => m.NotFound),

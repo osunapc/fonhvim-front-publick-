@@ -18,6 +18,7 @@ import { AuthService } from '../../components/common/auth/auth.service';
 export class Login {
   @Output() close = new EventEmitter<void>();
   @Output() openRegister = new EventEmitter<void>();
+  @Output() openForgotPassword = new EventEmitter<void>();
   loginForm: FormGroup;
   private authService = inject(AuthService);
   private router = inject(Router);

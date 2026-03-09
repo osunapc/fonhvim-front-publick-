@@ -60,4 +60,12 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this._storage.get('session') !== null;
   }
+
+  requestPasswordReset(email: string): Observable<any> {
+    return this.http.post(`${environment.API_URL}/forgot-password`, { email });
+  }
+
+  resetPassword(data: { token: string; newPassword: string }): Observable<any> {
+    return this.http.post(`${environment.API_URL}/reset-password`, data);
+  }
 }

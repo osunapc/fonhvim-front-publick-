@@ -4,9 +4,7 @@ import { BarraNavegacion } from '../../components/barra-navegacion/barra-navegac
 import { SeccionPrincipal } from '../../components/seccion-principal/seccion-principal';
 import { Login } from '../../components/login/login';
 import { Registro } from '../../components/registro/registro';
-
-
-
+import { ForgotPasswordComponent } from '../../components/forgot-password/forgot-password';
 @Component({
   selector: 'app-pagina-inicio',
   standalone: true,
@@ -15,8 +13,9 @@ import { Registro } from '../../components/registro/registro';
     BarraNavegacion,
     SeccionPrincipal,
     Login,
-    Registro
-],
+    Registro,
+    ForgotPasswordComponent,
+  ],
   templateUrl: './home.html',
   styles: [],
 })
@@ -24,4 +23,5 @@ export class Home {
   currentYear = new Date().getFullYear();
   showLogin = false;
   showRegister = false;
+  showForgotPassword = false;
 }
