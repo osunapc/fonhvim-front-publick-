@@ -52,4 +52,12 @@ export class AuthService {
   register(data: any): Observable<any> {
     return this.http.post(`${environment.API_URL}/register`, data);
   }
+
+  logout(): void {
+    this._storage.remove('session');
+  }
+
+  isLoggedIn(): boolean {
+    return this._storage.get('session') !== null;
+  }
 }

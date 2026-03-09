@@ -55,47 +55,91 @@
           class="hover:text-red-100 border-b-2 border-transparent hover:border-white transition-colors py-2 px-1 text-sm tracking-wide"
           >SOLICITUDES</a
         >
+
+        @if (isLoggedIn()) {
+          <button
+            (click)="logout()"
+            class="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all border border-white/20 flex items-center gap-2"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            SALIR
+          </button>
+        }
       </div>
     </div>
 
     <!-- Mobile Menu -->
     @if (isMenuOpen) {
-    <div
-      class="md:hidden pb-4 animate-fade-in border-t border-vinotinto-hover mt-2"
-    >
-      <div class="flex flex-col space-y-1 pt-2">
-        <a
-          href="/"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >INICIO</a
-        >
-        <a
-          href="/organigrama"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >ORGANIGRAMA</a
-        >
-        <a
-          href="/quienes-somos"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >QUIÉNES SOMOS</a
-        >
-        <a
-          href="/servicios"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >SERVICIOS</a
-        >
-        <a
-          href="/galeria"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >GALERÍA</a
-        >
-        <a
-          href="/solicitudes"
-          class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
-          >SOLICITUDES</a
-        >
+      <div
+        class="md:hidden pb-4 animate-fade-in border-t border-vinotinto-hover mt-2"
+      >
+        <div class="flex flex-col space-y-1 pt-2">
+          <a
+            href="/"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >INICIO</a
+          >
+          <a
+            href="/organigrama"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >ORGANIGRAMA</a
+          >
+          <a
+            href="/quienes-somos"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >QUIÉNES SOMOS</a
+          >
+          <a
+            href="/servicios"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >SERVICIOS</a
+          >
+          <a
+            href="/galeria"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >GALERÍA</a
+          >
+          <a
+            href="/solicitudes"
+            class="block px-4 py-2 text-sm text-white hover:bg-vinotinto-hover rounded transition-colors"
+            >SOLICITUDES</a
+          >
+
+          @if (isLoggedIn()) {
+            <button
+              (click)="logout()"
+              class="flex items-center gap-3 w-full px-4 py-3 text-sm font-bold text-white bg-white/10 hover:bg-white/20 rounded transition-colors mt-4 border-t border-white/10"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                ></path>
+              </svg>
+              SALIR DEL SISTEMA
+            </button>
+          }
+        </div>
       </div>
-    </div>
     }
   </div>
 </nav>

@@ -46,102 +46,110 @@ import { PublicSolicitudesService } from '../../common/services/solicitudes.serv
           </div>
 
           <!-- Resultados / Timeline -->
-          <div *ngIf="solicitud()" class="animate-fade-in space-y-8">
-            <div
-              class="bg-white rounded-[2rem] shadow-xl p-10 border border-slate-100"
-            >
+          @if (solicitud()) {
+            <div class="animate-fade-in space-y-8">
               <div
-                class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12"
+                class="bg-white rounded-[2rem] shadow-xl p-10 border border-slate-100"
               >
-                <div>
-                  <h3 class="text-xl font-bold text-slate-800">
-                    Hola, {{ solicitud().nombre }} {{ solicitud().apellido }}
-                  </h3>
-                  <p
-                    class="text-sm text-slate-400 font-bold uppercase tracking-widest mt-1"
+                <div
+                  class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12"
+                >
+                  <div>
+                    <h3 class="text-xl font-bold text-slate-800">
+                      Hola, {{ solicitud().nombre }} {{ solicitud().apellido }}
+                    </h3>
+                    <p
+                      class="text-sm text-slate-400 font-bold uppercase tracking-widest mt-1"
+                    >
+                      Solicitud #{{ solicitud().id }} •
+                      {{ solicitud().tipo_solicitud }}
+                    </p>
+                  </div>
+                  <div
+                    class="px-6 py-3 bg-vinotinto/5 border border-vinotinto/10 rounded-2xl"
                   >
-                    Solicitud #{{ solicitud().id }} •
-                    {{ solicitud().tipo_solicitud }}
+                    <span
+                      class="text-xs font-black text-vinotinto uppercase tracking-tighter"
+                      >Estatus Actual:</span
+                    >
+                    <span
+                      class="ml-2 text-xs font-bold text-slate-600 block md:inline"
+                      >{{ solicitud().status.replace('_', ' ') }}</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Visual Timeline -->
+                <div class="relative px-4">
+                  <!-- Linea Base -->
+                  <div
+                    class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 hidden md:block"
+                  ></div>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10"
+                  >
+                    @for (step of steps; track step.label) {
+                      <div class="flex flex-col items-center text-center">
+                        <div
+                          class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500"
+                          [class.bg-vinotinto]="isPastOrCurrent(step.status)"
+                          [class.text-white]="isPastOrCurrent(step.status)"
+                          [class.bg-white]="!isPastOrCurrent(step.status)"
+                          [class.text-slate-300]="!isPastOrCurrent(step.status)"
+                          [class.border-4]="true"
+                          [class.border-vinotinto]="
+                            isPastOrCurrent(step.status)
+                          "
+                          [class.border-slate-100]="
+                            !isPastOrCurrent(step.status)
+                          "
+                          [class.scale-125]="isCurrent(step.status)"
+                          [class.shadow-xl]="isCurrent(step.status)"
+                          [class.shadow-vinotinto/30]="isCurrent(step.status)"
+                        >
+                          <span class="text-lg">{{ step.icon }}</span>
+                        </div>
+                        <p
+                          class="mt-4 text-[10px] font-black uppercase tracking-widest"
+                          [class.text-vinotinto]="isPastOrCurrent(step.status)"
+                          [class.text-slate-300]="!isPastOrCurrent(step.status)"
+                        >
+                          {{ step.label }}
+                        </p>
+                      </div>
+                    }
+                  </div>
+                </div>
+
+                <div
+                  class="mt-16 p-8 bg-slate-50 rounded-3xl border border-slate-100 text-center"
+                >
+                  <p
+                    class="text-sm text-slate-600 font-medium leading-relaxed italic"
+                  >
+                    "{{ getStatusMessage(solicitud().status) }}"
                   </p>
                 </div>
-                <div
-                  class="px-6 py-3 bg-vinotinto/5 border border-vinotinto/10 rounded-2xl"
-                >
-                  <span
-                    class="text-xs font-black text-vinotinto uppercase tracking-tighter"
-                    >Estatus Actual:</span
-                  >
-                  <span
-                    class="ml-2 text-xs font-bold text-slate-600 block md:inline"
-                    >{{ solicitud().status.replace('_', ' ') }}</span
-                  >
-                </div>
-              </div>
-
-              <!-- Visual Timeline -->
-              <div class="relative px-4">
-                <!-- Linea Base -->
-                <div
-                  class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 hidden md:block"
-                ></div>
-
-                <div
-                  class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10"
-                >
-                  @for (step of steps; track step.label) {
-                    <div class="flex flex-col items-center text-center">
-                      <div
-                        class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500"
-                        [class.bg-vinotinto]="isPastOrCurrent(step.status)"
-                        [class.text-white]="isPastOrCurrent(step.status)"
-                        [class.bg-white]="!isPastOrCurrent(step.status)"
-                        [class.text-slate-300]="!isPastOrCurrent(step.status)"
-                        [class.border-4]="true"
-                        [class.border-vinotinto]="isPastOrCurrent(step.status)"
-                        [class.border-slate-100]="!isPastOrCurrent(step.status)"
-                        [class.scale-125]="isCurrent(step.status)"
-                        [class.shadow-xl]="isCurrent(step.status)"
-                        [class.shadow-vinotinto/30]="isCurrent(step.status)"
-                      >
-                        <span class="text-lg">{{ step.icon }}</span>
-                      </div>
-                      <p
-                        class="mt-4 text-[10px] font-black uppercase tracking-widest"
-                        [class.text-vinotinto]="isPastOrCurrent(step.status)"
-                        [class.text-slate-300]="!isPastOrCurrent(step.status)"
-                      >
-                        {{ step.label }}
-                      </p>
-                    </div>
-                  }
-                </div>
-              </div>
-
-              <div
-                class="mt-16 p-8 bg-slate-50 rounded-3xl border border-slate-100 text-center"
-              >
-                <p
-                  class="text-sm text-slate-600 font-medium leading-relaxed italic"
-                >
-                  "{{ getStatusMessage(solicitud().status) }}"
-                </p>
               </div>
             </div>
-          </div>
+          }
 
           <!-- No Encontrado -->
-          <div
-            *ngIf="noEncontrado()"
-            class="bg-orange-50 border border-orange-100 rounded-[2rem] p-10 text-center animate-bounce-short"
-          >
-            <div class="text-4xl mb-4">🔍</div>
-            <h3 class="text-lg font-bold text-orange-800">
-              No encontramos registros
-            </h3>
-            <p class="text-sm text-orange-700/70 mt-2">
-              Verifica que el número de cédula sea correcto o intenta más tarde.
-            </p>
-          </div>
+          @if (noEncontrado()) {
+            <div
+              class="bg-orange-50 border border-orange-100 rounded-[2rem] p-10 text-center animate-bounce-short"
+            >
+              <div class="text-4xl mb-4">🔍</div>
+              <h3 class="text-lg font-bold text-orange-800">
+                No encontramos registros
+              </h3>
+              <p class="text-sm text-orange-700/70 mt-2">
+                Verifica que el número de cédula sea correcto o intenta más
+                tarde.
+              </p>
+            </div>
+          }
         </div>
       </main>
 
