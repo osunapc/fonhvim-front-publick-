@@ -12,8 +12,8 @@ COPY . .
 
 # Build argument for API URL
 ARG API_URL=http://localhost:3000
-RUN sed -i "s|http://localhost:3000/api/v1|$API_URL|g" src/environments/environment.ts && \
-    sed -i "s|http://localhost:3000/api/v1|$API_URL|g" src/environments/environment.development.ts
+RUN sed -i "s|http://localhost:3000|$API_URL|g" src/environments/environment.ts && \
+    sed -i "s|http://localhost:3000|$API_URL|g" src/environments/environment.development.ts
 
 RUN npm run build
 
