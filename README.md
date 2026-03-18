@@ -1,59 +1,107 @@
-# FrontExpress
+# Frontend FONHVIM - Portal Ciudadano
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+**Sistema de solicitudes de ayuda social para ciudadanos**
 
-## Development server
+## Descripción
 
-To start a local development server, run:
+Aplicación Angular para el portal público de FONHVIM. Permite a los ciudadanos:
+
+- Registrar solicitudes de ayuda social
+- Consultar estado de sus solicitudes
+- Subir documentos requeridos
+- Recibir notificaciones
+
+## Arquitectura
+
+```mermaid
+graph LR
+    A[ Ciudadano ] --> B[ Frontend Angular ]
+    B --> C[ API Backend NestJS ]
+    C --> D[ Base de Datos PostgreSQL ]
+```
+
+## Flujo de Registro de Solicitud
+
+```mermaid
+flowchart TD
+    A[Inicio] --> B[Formulario de Solicitud]
+    B --> C[Validación de Datos]
+    C --> D[Envío a Backend]
+    D --> E[Creación en BD\nEstado: EN_ESPERA]
+    E --> F[Confirmación al Ciudadano]
+    F --> G[Inicio de Proceso Interno]
+```
+
+## Estructura del Proyecto
+
+```
+front-fonhvim/
+├── src/
+│   ├── app/
+│   │   ├── core/           # Servicios, guards, interceptors
+│   │   ├── features/       # Módulos de características
+│   │   │   ├── home/       # Página principal
+│   │   │   ├── solicitud/  # Registro de solicitudes
+│   │   │   ├── estado/     # Consulta de estado
+│   │   │   └── auth/       # Autenticación
+│   │   └── shared/         # Componentes compartidos
+│   ├── assets/             # Imágenes, estilos
+│   └── environments/       # Configuración de entornos
+├── angular.json
+└── package.json
+```
+
+## Instalación
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno
+cp src/environments/environment.example.ts src/environments/environment.ts
+```
+
+## Ejecución
+
+```bash
+# Servidor de desarrollo
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
+# Construir para producción
 ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+# Ejecutar tests
 ng test
 ```
 
-## Running end-to-end tests
+## Endpoints de Backend Utilizados
 
-For end-to-end (e2e) testing, run:
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | `/solicitudes` | Crear solicitud |
+| GET | `/solicitudes/:id` | Consultar solicitud |
+| GET | `/solicitudes/ci/:ci` | Buscar por cédula |
+| GET | `/solicitudes/tasa-bcv` | Obtener tasa BCV |
 
-```bash
-ng e2e
-```
+## Validaciones del Formulario
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Cédula única y válida
+- Campos requeridos: nombres, dirección, teléfono
+- Validación de email opcional
+- Documentos adjuntos según tipo de solicitud
 
-## Additional Resources
+## Componentes Principales
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **SolicitudFormComponent**: Formulario de registro
+- **EstadoSolicitudComponent**: Consulta de estado
+- **DocumentUploadComponent**: Subida de documentos
+
+## Recursos
+
+- [Documentación Técnica](../documentacion_tecnica_solicitud_interno.md)
+- [Backend API](../backend-fonhvim/README.md)
+- [Panel Interno](../fonhvim-interno/README.md)
+
+## Licencia
+
+MIT License - FONHVIM
