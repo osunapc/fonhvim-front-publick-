@@ -20,6 +20,7 @@ export class Login {
   @Output() openRegister = new EventEmitter<void>();
   @Output() openForgotPassword = new EventEmitter<void>();
   loginForm: FormGroup;
+  showPassword = false;
   private authService = inject(AuthService);
   private router = inject(Router);
 
@@ -28,6 +29,10 @@ export class Login {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   onSubmit() {
