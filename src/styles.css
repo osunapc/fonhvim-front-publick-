@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --color-vinotinto: #6d0a1b; /* Típico vinotinto institucional venezolano */
-  --color-vinotinto-hover: #560815;
+  --color-vinotinto: #0b1930;
+  --color-vinotinto-hover: #081422;
 }
