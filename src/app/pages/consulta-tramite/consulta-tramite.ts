@@ -1,16 +1,30 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Encabezado } from '../../components/encabezado/encabezado';
 import { PublicSolicitudesService } from '../../common/services/solicitudes.service';
 
 @Component({
   selector: 'app-consulta-tramite',
   standalone: true,
-  imports: [CommonModule, FormsModule, Encabezado],
+  imports: [CommonModule, FormsModule, Encabezado, RouterLink],
   template: `
     <div class="min-h-screen bg-slate-50 flex flex-col font-sans">
       <app-encabezado></app-encabezado>
+
+      <!-- Botón volver al portal - visible en móvil -->
+      <div class="md:hidden p-4">
+        <a 
+          routerLink="/" 
+          class="inline-flex items-center text-vinotinto hover:text-vinotinto-hover font-medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Volver al Portal
+        </a>
+      </div>
 
       <main class="flex-grow flex items-center justify-center p-6">
         <div class="max-w-4xl w-full">

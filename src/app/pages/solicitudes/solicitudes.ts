@@ -21,9 +21,15 @@ export class Solicitudes {
   private solicitudesService = inject(PublicSolicitudesService);
   currentYear = new Date().getFullYear();
   view: 'list' | 'selector' | 'social-form' = 'list';
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   setViewState(newView: 'list' | 'selector' | 'social-form') {
     this.view = newView;
+    this.menuOpen = false;
   }
 
   handleTramiteSelection(type: string) {
