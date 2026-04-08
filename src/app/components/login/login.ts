@@ -37,7 +37,12 @@ export class Login {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+      let { email, password } = this.loginForm.value;
+      
+      // Eliminar espacios adicionales al inicio y fin
+      email = email?.trim() || '';
+      password = password?.trim() || '';
+      
       console.log('Intentando login:', email);
 
       this.authService.login(email, password).subscribe({

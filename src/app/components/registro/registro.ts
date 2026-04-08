@@ -62,17 +62,17 @@ export class Registro {
     if (this.registroForm.valid) {
       const rawData = this.registroForm.value;
 
-      // Mapeo de campos para el backend (RegisterDto)
+      // Mapeo de campos para el backend (RegisterDto) con trim
       const registerData = {
-        username: rawData.nombre, // Backend espera username
-        email: rawData.email,
-        password: rawData.password,
-        ci: rawData.ci,
-        telefono: rawData.telefono,
-        sexo: rawData.sexo,
-        ciudad: rawData.municipio, // Usamos el nombre del municipio como ciudad por ahora
-        direccion_vivienda: rawData.direccion_vivienda,
-        municipio_parroquia: `${rawData.municipio} - ${rawData.parroquia}`,
+        username: rawData.nombre?.trim() || '',
+        email: rawData.email?.trim() || '',
+        password: rawData.password?.trim() || '',
+        ci: rawData.ci?.trim() || '',
+        telefono: rawData.telefono?.trim() || '',
+        sexo: rawData.sexo || '',
+        ciudad: rawData.municipio || 'Merida',
+        direccion_vivienda: rawData.direccion_vivienda?.trim() || '',
+        municipio_parroquia: `${rawData.municipio || ''} - ${rawData.parroquia || ''}`,
       };
 
       console.log('Enviando registro:', registerData);
