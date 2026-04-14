@@ -7,6 +7,10 @@ import { StorageService } from '../../../common/services/storage.service';
 import { jwtDecode } from 'jwt-decode';
 interface MyJwtPayload {
   role?: string;
+  nombre?: string;
+  ci?: string;
+  municipio_parroquia?: string;
+  email?: string;
 }
 
 @Injectable({
@@ -34,16 +38,27 @@ export class AuthService {
     if (session !== null) {
       try {
         const sessionObj = JSON.parse(session);
-        // CORRECCIÓN: Declara explícitamente el tipo de token esperado.
         const decodedToken = jwtDecode<MyJwtPayload>(sessionObj.access_token);
 
-        // Valida que el token y el rol existan antes de devolverlos.
         if (decodedToken && decodedToken.role) {
           return of(decodedToken.role);
         }
       } catch (e) {
         console.error('Error al decodificar el token:', e);
-        // No se encontró un token válido o hubo un error, se devuelve null.
+      }
+    }
+    return of(null);
+  }
+
+  getUserData(): Observable<MyJwtPayload | null> {
+    const session = this._storage.get('session');
+    if (session !== null) {
+      try {
+        const sessionObj = JSON.parse(session);
+        const decodedToken = jwtDecode<MyJwtPayload>(sessionObj.access_token);
+        return of(decodedToken);
+      } catch (e) {
+        console.error('Error al decodificar el token:', e);
       }
     }
     return of(null);

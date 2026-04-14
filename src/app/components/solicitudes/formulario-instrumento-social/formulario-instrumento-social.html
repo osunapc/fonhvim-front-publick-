@@ -36,7 +36,7 @@
         <h4
           class="text-blue-400 font-bold text-xs uppercase tracking-widest whitespace-nowrap"
         >
-          Tipo de Trámite a Iniciar
+          Tipo de Trámite a Iniciar <span class="text-red-500">*</span>
         </h4>
         <div class="h-px bg-slate-800 flex-grow"></div>
       </div>
@@ -105,6 +105,9 @@
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="Ej. Pedro Pérez"
           />
+          @if (isFieldInvalid('nombres_apellidos')) {
+            <p class="text-red-500 text-xs mt-1">El nombre es obligatorio</p>
+          }
         </div>
 
         <div>
@@ -116,8 +119,11 @@
             type="text"
             formControlName="ci"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none uppercase"
-            placeholder="V-12345678"
+            placeholder="12345678"
           />
+          @if (isFieldInvalid('ci')) {
+            <p class="text-red-500 text-xs mt-1">La cédula es obligatoria</p>
+          }
         </div>
 
         <div>
@@ -131,6 +137,9 @@
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
             placeholder="0414-0000000"
           />
+          @if (isFieldInvalid('telefono')) {
+            <p class="text-red-500 text-xs mt-1">El teléfono es obligatorio</p>
+          }
         </div>
 
         <div>
@@ -164,6 +173,19 @@
             <option value="Divorciado/a">Divorciado/a</option>
             <option value="Viudo/a">Viudo/a</option>
           </select>
+        </div>
+
+        <div>
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Ocupación / Profesión</label
+          >
+          <input
+            type="text"
+            formControlName="ocupacion_jefe"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="Ej. Docente, Ingeniero, Comerciante"
+          />
         </div>
       </div>
     </section>
@@ -220,6 +242,9 @@
                   formControlName="nombre"
                   class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
                 />
+                @if (isIntegranteFieldInvalid($index, 'nombre')) {
+                  <p class="text-red-500 text-xs mt-1">El nombre es obligatorio</p>
+                }
               </div>
               <div>
                 <label
@@ -231,6 +256,9 @@
                   formControlName="apellido"
                   class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
                 />
+                @if (isIntegranteFieldInvalid($index, 'apellido')) {
+                  <p class="text-red-500 text-xs mt-1">El apellido es obligatorio</p>
+                }
               </div>
               <div>
                 <label
@@ -261,8 +289,10 @@
                 >
                 <input
                   type="number"
+                  step="1"
                   formControlName="edad"
                   class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                  placeholder="Ej. 25"
                 />
               </div>
               <div>
@@ -306,8 +336,10 @@
                 >
                 <input
                   type="number"
+                  step="0.01"
                   formControlName="ingreso_mensual"
                   class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+                  placeholder="0.00"
                 />
               </div>
               <div>
@@ -366,6 +398,22 @@
         <div class="md:col-span-2">
           <label
             class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
+            >Municipio / Parroquia <span class="text-red-500">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="municipio_parroquia"
+            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="Municipio - Parroquia"
+          />
+          @if (isFieldInvalid('municipio_parroquia')) {
+            <p class="text-red-500 text-xs mt-1">El municipio/parroquia es obligatorio</p>
+          }
+        </div>
+
+        <div class="md:col-span-2">
+          <label
+            class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Dirección de Vivienda Actual
             <span class="text-red-500">*</span></label
           >
@@ -375,6 +423,9 @@
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none resize-none"
             placeholder="Av, Sector, Casa Nº..."
           ></textarea>
+          @if (isFieldInvalid('direccion_vivienda')) {
+            <p class="text-red-500 text-xs mt-1">La dirección es obligatoria</p>
+          }
         </div>
 
         <div>
@@ -400,12 +451,14 @@
             class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Tipo de Familia</label
           >
-          <input
-            type="text"
+          <select
             formControlName="tipo_familia"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
-            placeholder="Ej. Nuclear, Extendida"
-          />
+          >
+            <option value="">Seleccione</option>
+            <option value="Unifamiliar">Unifamiliar</option>
+            <option value="Multifamiliar">Multifamiliar</option>
+          </select>
         </div>
 
         <div>
@@ -430,8 +483,10 @@
             >
             <input
               type="number"
+              step="0.01"
               formControlName="monto_alquiler"
               class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+              placeholder="0.00"
             />
           </div>
         }
@@ -453,11 +508,13 @@
             class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Ingreso Cesta Ticket (Bs.)</label
           >
-          <input
-            type="number"
-            formControlName="ingreso_mensual_cestatikes"
-            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
-          />
+<input
+              type="number"
+              step="0.01"
+              formControlName="ingreso_mensual_cestatikes"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+              placeholder="0.00"
+            />
         </div>
 
         <div>
@@ -465,11 +522,13 @@
             class="block text-[11px] font-bold text-slate-600 uppercase mb-2 tracking-wide"
             >Ingreso Mensual del Hogar (Total Bs.)</label
           >
-          <input
-            type="number"
-            formControlName="ingreso_mensual_hogar"
-            class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
-          />
+<input
+              type="number"
+              step="0.01"
+              formControlName="ingreso_mensual_hogar"
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+              placeholder="0.00"
+            />
         </div>
 
         <div class="md:col-span-2">
@@ -491,8 +550,10 @@
           >
           <input
             type="number"
+            step="1"
             formControlName="integrantes_trabajan"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="0"
           />
         </div>
 
@@ -503,8 +564,10 @@
           >
           <input
             type="number"
+            step="1"
             formControlName="adultos_mayores"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="0"
           />
         </div>
 
@@ -515,8 +578,10 @@
           >
           <input
             type="number"
+            step="1"
             formControlName="menores_grupo_familiar"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="0"
           />
         </div>
 
@@ -527,8 +592,10 @@
           >
           <input
             type="number"
+            step="1"
             formControlName="personas_discapacidad"
             class="w-full bg-slate-50 border border-slate-200 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-vinotinto/20 focus:border-vinotinto focus:bg-white transition-all outline-none"
+            placeholder="0"
           />
         </div>
 
