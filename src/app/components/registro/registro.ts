@@ -12,6 +12,7 @@ import {
   Parroquia,
 } from '../../common/constants/geografia-merida';
 import { AuthService } from '../common/auth/auth.service';
+import { ModalService } from '../../core/services/modal.service';
 
 @Component({
   selector: 'app-registro',
@@ -28,6 +29,7 @@ export class Registro {
   parroquias: Parroquia[] = [];
   private authService = inject(AuthService);
   private router = inject(Router);
+  private modalService = inject(ModalService);
 
   constructor(private fb: FormBuilder) {
     this.registroForm = this.fb.group({
@@ -80,12 +82,12 @@ export class Registro {
       this.authService.register(registerData).subscribe({
         next: (response: any) => {
           console.log('Registro exitoso:', response);
-          alert('Registro completado con éxito. Ya puede iniciar sesión.');
+          this.modalService.success('Registro completado con éxito. Ya puede iniciar sesión.');
           this.close.emit();
         },
         error: (err: any) => {
           console.error('Error en registro:', err);
-          alert(
+          this.modalService.error(
             'Error al registrarse: ' +
               (err.error?.message || 'Servidor no disponible'),
           );

@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../components/common/auth/auth.service';
+import { ModalService } from '../../core/services/modal.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class Login {
   showPassword = false;
   private authService = inject(AuthService);
   private router = inject(Router);
+  private modalService = inject(ModalService);
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
@@ -53,7 +55,7 @@ export class Login {
         },
         error: (err: any) => {
           console.error('Error en login:', err);
-          alert(
+          this.modalService.error(
             'Error de autenticación: Credenciales inválidas o servidor no disponible.',
           );
         },

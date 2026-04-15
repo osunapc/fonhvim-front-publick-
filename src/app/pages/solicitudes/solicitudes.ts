@@ -4,6 +4,7 @@ import { SelectorTramites } from '../../components/solicitudes/selector-tramites
 import { FormularioInstrumentoSocial } from '../../components/solicitudes/formulario-instrumento-social/formulario-instrumento-social';
 import { CommonModule } from '@angular/common';
 import { PublicSolicitudesService } from '../../common/services/solicitudes.service';
+import { ModalService } from '../../core/services/modal.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -21,6 +22,7 @@ export class Solicitudes {
   @ViewChild(FormularioInstrumentoSocial) formularioSocial?: FormularioInstrumentoSocial;
   
   private solicitudesService = inject(PublicSolicitudesService);
+  private modalService = inject(ModalService);
   currentYear = new Date().getFullYear();
   view: 'list' | 'selector' | 'social-form' = 'list';
   menuOpen = false;
@@ -48,14 +50,14 @@ export class Solicitudes {
     console.log('Form data submitted:', data);
     this.solicitudesService.enviarSolicitud(data).subscribe({
       next: () => {
-        alert(
+        this.modalService.success(
           'Su solicitud ha sido enviada exitosamente. En breve recibirá noticias.',
         );
         this.formularioSocial?.resetForm();
         this.view = 'list';
       },
       error: (err) => {
-        alert(
+        this.modalService.error(
           'Error al enviar solicitud: ' +
             (err.error?.message || 'Servidor no disponible'),
         );
