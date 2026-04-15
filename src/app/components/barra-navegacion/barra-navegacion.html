@@ -50,11 +50,13 @@
           class="hover:text-red-100 border-b-2 border-transparent hover:border-white transition-colors py-2 px-1 text-sm tracking-wide"
           >GALERÍA</a
         >
+        @if (isLoggedIn()) {
         <a
           href="/solicitudes"
           class="hover:text-red-100 border-b-2 border-transparent hover:border-white transition-colors py-2 px-1 text-sm tracking-wide"
           >SOLICITUDES</a
         >
+        }
 
         @if (isLoggedIn()) {
           <button
