@@ -10,4 +10,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class PanelAcceso {
   @Output() openLogin = new EventEmitter<void>();
   @Output() openRegister = new EventEmitter<void>();
+  @Output() openForgotPassword = new EventEmitter<void>();
 }

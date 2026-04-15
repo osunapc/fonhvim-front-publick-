@@ -12,4 +12,5 @@ import { PanelAcceso } from '../panel-acceso/panel-acceso';
 export class SeccionPrincipal {
   @Output() openLogin = new EventEmitter<void>();
   @Output() openRegister = new EventEmitter<void>();
+  @Output() openForgotPassword = new EventEmitter<void>();
 }
