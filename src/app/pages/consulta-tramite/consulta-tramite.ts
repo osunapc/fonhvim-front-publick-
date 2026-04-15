@@ -14,7 +14,7 @@ import { PublicSolicitudesService } from '../../common/services/solicitudes.serv
       <app-encabezado></app-encabezado>
 
       <!-- Botón volver al portal - visible en móvil -->
-      <div class="md:hidden p-4">
+      <div class="p-4">
         <a 
           routerLink="/" 
           class="inline-flex items-center text-vinotinto hover:text-vinotinto-hover font-medium"
